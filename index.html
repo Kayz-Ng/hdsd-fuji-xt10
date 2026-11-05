@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hướng dẫn nút bấm Fujifilm X-T10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9ECEF;--surface:#FFFFFF;--ink:#1C2126;--muted:#5B6570;--line:#CDD3D9;
+  --accent:#E8A317;--on-accent:#2B1D00;--soft:#FBF1DA;
+  --body:#2A2E33;--body2:#363B41;--edge:#1A1D21;--metal:#C3C8CE;--metal2:#8F959C;--glass:#14171A;--label:#E6E9EC;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121518;--surface:#1B1F23;--ink:#E6E9EC;--muted:#9AA4AE;--line:#2E343A;
+    --accent:#F2B632;--on-accent:#2B1D00;--soft:#3A2E12;
+    --body:#2F343A;--body2:#3B4148;--edge:#566069;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121518;--surface:#1B1F23;--ink:#E6E9EC;--muted:#9AA4AE;--line:#2E343A;
+  --accent:#F2B632;--on-accent:#2B1D00;--soft:#3A2E12;
+  --body:#2F343A;--body2:#3B4148;--edge:#566069;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 40px}
+header h1{font-size:clamp(24px,4vw,32px);font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+header p{margin:0;color:var(--muted);max-width:62ch}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:22px 0 14px}
+.views{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px}
+.views button{font:inherit;font-size:15px;border:0;background:transparent;color:var(--muted);padding:7px 16px;border-radius:999px;cursor:pointer}
+.views button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.preset{font:inherit;font-size:15px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:10px;cursor:pointer}
+.preset .sw{width:34px;height:20px;border-radius:10px;background:var(--line);position:relative;transition:background .2s}
+.preset .sw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:transform .2s}
+.preset[aria-pressed="true"] .sw{background:var(--accent)}
+.preset[aria-pressed="true"] .sw::after{transform:translateX(14px)}
+button:focus-visible,.hs:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 10px 14px}
+.stage svg{display:block;width:100%;height:auto}
+.stage svg[hidden]{display:none}
+.orient{fill:var(--muted);font-size:12px;font-family:inherit}
+.hs{cursor:pointer;outline:none}
+.hs .hit{fill:transparent}
+.hs .ring{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3;opacity:.9}
+.hs:hover .ring{stroke-dasharray:none}
+.hs.sel .ring{stroke-dasharray:none;stroke-width:3;fill:var(--accent);fill-opacity:.22}
+.hs .badge{display:none}
+.show-preset .hs.has-preset .badge{display:block;fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 4px 0}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:5px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.show-preset .chip.has-preset::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:middle}
+.show-preset .chip.has-preset[aria-current="true"]::before{background:var(--on-accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px;min-height:320px}
+.panel h2{font-size:22px;font-weight:600;line-height:1.25;margin:0 0 4px}
+.panel .where{color:var(--muted);font-size:14px;margin:0 0 14px}
+.panel h3{font-size:15px;font-weight:600;margin:18px 0 4px}
+.panel p{margin:0 0 8px}
+.panel ul,.panel ol{margin:0;padding-left:20px}
+.panel li{margin:3px 0}
+.setbox{background:var(--soft);border-left:3px solid var(--accent);border-radius:0;padding:10px 14px;margin:16px 0 0}
+.setbox strong{font-weight:600}
+.steps li button{font:inherit;color:var(--ink);background:none;border:0;padding:0;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.empty{color:var(--muted)}
+footer{color:var(--muted);font-size:13px;margin-top:22px;max-width:70ch}
+.opts{margin-top:18px;border-top:1px solid var(--line);padding-top:4px}
+.oset h3{margin-top:16px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.pill{font:inherit;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:4px 11px;border-radius:8px;cursor:pointer}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.odesc{margin:0 0 8px}
+.prev{border-radius:10px;overflow:hidden;border:1px solid var(--line);margin:4px 0 4px}
+.prev svg{display:block;width:100%;height:auto}
+.cap{font-size:13px;color:var(--muted);margin:2px 0 0}
+.panel{max-height:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Nút bấm và bánh xoay trên Fujifilm X-T10</h1>
+  <p>Chạm vào vòng tròn vàng trên máy để xem nút đó dùng làm gì, rồi chọn từng lựa chọn của nút để xem ảnh thay đổi ra sao. Bật “Thiết lập chế độ A” để xem cách đặt máy cho người mới bắt đầu.</p>
+</header>
+
+<div class="bar">
+  <div class="views" role="group" aria-label="Chọn mặt máy">
+    <button data-view="tren" aria-pressed="true">Mặt trên</button>
+    <button data-view="sau" aria-pressed="false">Mặt sau</button>
+    <button data-view="truoc" aria-pressed="false">Mặt trước</button>
+  </div>
+  <button class="preset" id="presetBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Thiết lập chế độ A</button>
+</div>
+
+<div class="grid">
+<div class="stage" id="stage">
+<svg id="v-tren" viewBox="0 0 680 290" role="img" aria-label="Mặt trên máy nhìn từ trên xuống, ống kính ở phía trên">
+  <text class="orient" x="340" y="34" text-anchor="middle">ống kính (phía trước)</text>
+  <rect x="285" y="44" width="110" height="72" rx="6" fill="var(--body2)" stroke="var(--edge)"/>
+  <rect x="110" y="116" width="460" height="104" rx="14" fill="var(--body)" stroke="var(--edge)"/>
+  <rect x="270" y="106" width="140" height="114" rx="10" fill="var(--body2)" stroke="var(--edge)"/>
+  <rect x="290" y="112" width="100" height="10" rx="3" fill="var(--metal2)"/>
+  <rect x="305" y="140" width="70" height="40" rx="3" fill="var(--glass)" stroke="var(--metal2)"/>
+  <rect x="300" y="220" width="80" height="30" rx="6" fill="var(--body2)" stroke="var(--edge)"/>
+  <text class="orient" x="340" y="272" text-anchor="middle">phía bạn (kính ngắm, mặt sau)</text>
+  <circle cx="180" cy="165" r="32" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="180" cy="165" r="29" fill="none" stroke="var(--metal2)" stroke-dasharray="2 3"/>
+  <rect x="120" y="150" width="10" height="18" rx="2" fill="var(--metal)"/>
+  <circle cx="455" cy="160" r="30" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="455" cy="160" r="27" fill="none" stroke="var(--metal2)" stroke-dasharray="2 3"/>
+  <rect x="470" y="196" width="20" height="8" rx="2" fill="var(--metal)"/>
+  <circle cx="513" cy="140" r="15" fill="var(--metal2)"/>
+  <circle cx="513" cy="140" r="9" fill="var(--metal)"/>
+  <circle cx="548" cy="128" r="7" fill="#D9443A"/>
+  <circle cx="538" cy="183" r="24" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="538" cy="183" r="21" fill="none" stroke="var(--metal2)" stroke-dasharray="2 3"/>
+  <g class="hslayer"></g>
+</svg>
+
+<svg id="v-sau" viewBox="0 0 680 340" role="img" aria-label="Mặt sau máy" hidden>
+  <rect x="150" y="80" width="380" height="230" rx="14" fill="var(--body)" stroke="var(--edge)"/>
+  <rect x="275" y="50" width="130" height="45" rx="10" fill="var(--body2)" stroke="var(--edge)"/>
+  <rect x="305" y="88" width="70" height="48" rx="10" fill="var(--glass)" stroke="var(--metal2)"/>
+  <circle cx="340" cy="70" r="3" fill="var(--metal2)"/>
+  <rect x="287" y="98" width="9" height="24" rx="2" fill="var(--metal)"/>
+  <rect x="172" y="150" width="240" height="145" rx="4" fill="var(--glass)" stroke="var(--metal2)"/>
+  <circle cx="185" cy="108" r="10" fill="var(--metal)"/>
+  <circle cx="218" cy="108" r="10" fill="var(--metal)"/>
+  <circle cx="398" cy="110" r="8" fill="var(--metal)"/>
+  <circle cx="428" cy="110" r="10" fill="var(--metal)"/>
+  <circle cx="465" cy="96" r="16" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="465" cy="96" r="13" fill="none" stroke="var(--metal2)" stroke-dasharray="2 3"/>
+  <circle cx="502" cy="112" r="10" fill="var(--metal)"/>
+  <circle cx="500" cy="152" r="10" fill="var(--metal)"/>
+  <circle cx="470" cy="222" r="36" fill="var(--metal2)"/>
+  <circle cx="470" cy="222" r="14" fill="var(--metal)"/>
+  <circle cx="500" cy="288" r="10" fill="var(--metal)"/>
+  <g class="hslayer"></g>
+</svg>
+
+<svg id="v-truoc" viewBox="0 0 680 340" role="img" aria-label="Mặt trước máy" hidden>
+  <rect x="110" y="110" width="460" height="190" rx="14" fill="var(--body)" stroke="var(--edge)"/>
+  <rect x="110" y="110" width="82" height="190" rx="14" fill="var(--body2)" stroke="var(--edge)"/>
+  <rect x="275" y="78" width="130" height="40" rx="10" fill="var(--body2)" stroke="var(--edge)"/>
+  <circle cx="340" cy="208" r="72" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="340" cy="208" r="58" fill="var(--glass)"/>
+  <ellipse cx="150" cy="128" rx="18" ry="8" fill="var(--metal)" stroke="var(--metal2)"/>
+  <circle cx="218" cy="140" r="6" fill="var(--metal2)"/>
+  <circle cx="436" cy="168" r="9" fill="var(--metal)"/>
+  <rect x="428" y="252" width="26" height="14" rx="3" fill="var(--metal)"/>
+  <text x="441" y="284" text-anchor="middle" fill="var(--label)" font-size="11" font-family="inherit">S C M</text>
+  <text class="orient" x="340" y="326" text-anchor="middle">nhìn thẳng vào mặt trước máy</text>
+  <g class="hslayer"></g>
+</svg>
+
+<div class="chips" id="chips" aria-label="Danh sách nút trên mặt này"></div>
+</div>
+
+<aside class="panel" id="panel" aria-live="polite"></aside>
+</div>
+
+<footer>Sơ đồ đơn giản hóa để chỉ vị trí tương đối, không đúng tỷ lệ. Tên và vị trí các nút theo sách hướng dẫn chính hãng của X-T10; tên mục menu có thể hơi khác tùy phiên bản firmware.</footer>
+</div>
+
+<script>
+const SAT = v => ({t:"saturate",v:String(v)});
+const MAT = v => ({t:"matrix",v:v});
+const C = [
+  {id:"drive",v:"tren",x:180,y:165,r:32,name:"Bánh DRIVE",where:"Mặt trên, bên trái",
+   what:"Chọn kiểu chụp mỗi khi bạn nhấn nút chụp. Bánh có 9 vị trí, theo sách hướng dẫn của Fujifilm.",
+   tip:"Nếu máy chụp liền nhiều tấm khi bạn chỉ muốn một tấm, hãy xem lại bánh này.",
+   preset:"Đặt ở S (chụp từng tấm).",
+   sets:[{label:"Các vị trí",opts:[
+     {n:"S",d:"Chụp từng tấm. Mỗi lần nhấn hết nút chụp là một ảnh. Dùng cho hầu hết trường hợp."},
+     {n:"CL",d:"Chụp liên tục tốc độ thấp khi giữ nút chụp. Hợp người đi lại, trẻ em chơi, để chọn ra tấm đẹp nhất."},
+     {n:"CH",d:"Chụp liên tục tốc độ cao. Hợp thể thao, chim bay, khoảnh khắc nhanh. Đầy thẻ nhớ rất nhanh."},
+     {n:"BKT1",d:"Chụp bù trừ: một lần nhấn cho ra vài tấm với độ sáng, ISO, giả lập màu, dải tương phản hoặc cân bằng trắng khác nhau. Kiểu bù trừ cho BKT1 chọn trong menu. Chỉ hoạt động ở P, S, A, M."},
+     {n:"BKT2",d:"Giống BKT1 nhưng gán được một kiểu bù trừ khác, ví dụ BKT1 bù sáng, BKT2 bù giả lập màu (chụp một lần ra 3 màu khác nhau)."},
+     {n:"Adv.1",d:"Bộ lọc nghệ thuật như máy đồ chơi, miniature, màu nổi một phần. Bộ lọc cho Adv.1 chọn trong menu. Chỉ lưu JPEG."},
+     {n:"Adv.2",d:"Giống Adv.1, gán được một bộ lọc khác."},
+     {n:"Phơi sáng kép",d:"Ghép hai lần chụp vào một ảnh. Chụp tấm đầu, máy hiện mờ tấm đó để bạn căn tấm thứ hai."},
+     {n:"Panorama",d:"Chụp toàn cảnh: nhấn nút chụp rồi lia máy đều tay theo hướng mũi tên, máy tự ghép thành ảnh dài."}]}]},
+  {id:"flash",v:"tren",x:125,y:159,r:9,name:"Cần bật đèn flash",where:"Mặt trên, mép trái. Đèn flash nằm trong phần gù phía trước hot shoe.",
+   what:"Gạt cần để đèn flash tích hợp bật lên khỏi phần gù kính ngắm. Ấn đèn xuống để tắt.",
+   tip:"Flash tích hợp nhỏ, hợp làm sáng mặt người khi chụp ngược sáng ban ngày hơn là chụp trong tối.",
+   sets:[{label:"Trạng thái đèn",cap:"Minh họa người đứng ngược sáng.",opts:[
+     {n:"Đèn đóng",d:"Không dùng flash. Người đứng ngược sáng sẽ bị tối mặt.",fx:{subj:-0.55}},
+     {n:"Đèn bật",d:"Flash làm sáng chủ thể ở gần (vài mét), còn nền ở xa gần như không đổi.",fx:{subj:0}}]}]},
+  {id:"shoe",v:"tren",x:340,y:160,r:24,name:"Hot shoe",where:"Mặt trên, chính giữa",
+   what:"Chân gắn đèn flash rời hoặc phụ kiện như micro. Trượt chân phụ kiện vào từ phía sau.",
+   tip:"Không cần dùng khi mới bắt đầu."},
+  {id:"shutter",v:"tren",x:455,y:160,r:30,name:"Bánh tốc độ",where:"Mặt trên, bên phải phần gù",
+   what:"Chọn tốc độ màn trập, tức thời gian cảm biến nhận ánh sáng. Số trên bánh là mẫu số: 250 nghĩa là 1/250 giây; riêng 1 là 1 giây. Bánh này cùng với khẩu độ quyết định chế độ chụp.",
+   tip:"Cầm tay nên giữ từ 1/60 giây trở lên. Vật chuyển động nhanh cần 1/500 trở lên.",
+   preset:"Đặt ở A.",
+   sets:[{label:"Các vị trí trên bánh",cap:"Minh họa: quả bóng đang lăn, giữ nguyên khẩu độ và ISO.",opts:[
+     {n:"A",d:"Máy tự chọn tốc độ cho đủ sáng. Kết hợp với khẩu độ bạn tự chọn là chế độ A (ưu tiên khẩu độ); kết hợp với khẩu độ A là chế độ P.",fx:{}},
+     {n:"4000",d:"1/4000 giây, nhanh nhất của màn trập cơ. Dùng ngoài nắng gắt khi mở khẩu to để xóa phông.",fx:{b:-1.6}},
+     {n:"2000",d:"1/2000 giây. Đóng băng nước bắn, chim bay.",fx:{b:-1.5}},
+     {n:"1000",d:"1/1000 giây. Đóng băng thể thao, xe chạy.",fx:{b:-1.3}},
+     {n:"500",d:"1/500 giây. Đóng băng người chạy, trẻ em chơi.",fx:{b:-0.9,m:0.5}},
+     {n:"250",d:"1/250 giây. Đủ cho người đi lại, chụp đường phố.",fx:{b:-0.5,m:1}},
+     {n:"180X",d:"1/180 giây, tốc độ đồng bộ đèn flash: tốc độ nhanh nhất dùng được với flash.",fx:{b:-0.3,m:1.5}},
+     {n:"125",d:"1/125 giây. Ổn cho chân dung, cảnh sinh hoạt bình thường.",fx:{b:-0.15,m:2.5}},
+     {n:"60",d:"1/60 giây. Mức an toàn thấp nhất khi cầm tay. Vật chuyển động nhanh bắt đầu nhòe.",fx:{m:5}},
+     {n:"30",d:"1/30 giây. Cần cầm thật chắc, ống kính có chống rung sẽ đỡ hơn.",fx:{b:0.35,m:8,shake:0.6}},
+     {n:"15",d:"1/15 giây. Ảnh sáng hơn nhưng vật chuyển động nhòe rõ, cầm tay dễ rung cả khung hình.",fx:{b:0.7,m:12,shake:1.2}},
+     {n:"8",d:"1/8 giây. Nên tựa máy hoặc dùng chân máy. Hợp chụp lia máy theo người đi xe.",fx:{b:1,m:18,shake:2}},
+     {n:"4",d:"1/4 giây. Cần chân máy. Nước chảy bắt đầu mượt.",fx:{b:1.2,m:22,shake:2.6}},
+     {n:"2",d:"1/2 giây. Cần chân máy. Dòng người, xe cộ thành vệt.",fx:{b:1.4,m:26,shake:3}},
+     {n:"1",d:"1 giây. Chụp đêm, vệt đèn xe, nước chảy mượt như lụa. Bắt buộc chân máy.",fx:{b:1.55,m:30,shake:3.5}},
+     {n:"T",d:"Chọn tốc độ chậm hơn 1 giây (đến vài chục giây) bằng bánh xoay. Dùng cho chụp đêm với chân máy."},
+     {n:"B",d:"Màn trập mở chừng nào bạn còn giữ nút chụp. Dùng cho pháo hoa, sao trời. Nút chụp có lỗ ren để gắn dây bấm mềm."}]}]},
+  {id:"auto",v:"tren",x:480,y:200,r:9,name:"Cần AUTO",where:"Mặt trên, ngay dưới bánh tốc độ",
+   what:"Chuyển qua lại giữa tự động hoàn toàn và chế độ bạn tự chỉnh.",
+   tip:"Khi bánh xoay “không ăn”, kiểm tra xem cần này có đang ở AUTO không.",
+   preset:"Gạt khỏi AUTO.",
+   sets:[{label:"Hai vị trí",opts:[
+     {n:"AUTO",d:"Máy tự chọn mọi thứ, kể cả chế độ cảnh. Bánh tốc độ, khẩu độ và nhiều mục menu bị bỏ qua. Dùng khi cần chụp vội."},
+     {n:"Thủ công",d:"Máy làm theo bánh tốc độ, khẩu độ, bù sáng và các thiết lập của bạn, kể cả giả lập màu."}]}]},
+  {id:"release",v:"tren",x:513,y:140,r:15,name:"Nút chụp và công tắc ON/OFF",where:"Mặt trên, giữa bánh tốc độ và bánh bù sáng",
+   what:"Vòng gạt quanh nút chụp để bật tắt máy. Nút ở giữa để lấy nét và chụp, có lỗ ren để gắn dây bấm mềm.",
+   tip:"Tập thói quen nhấn nửa chừng trước khi chụp, ảnh sẽ ít bị mờ nét.",
+   preset:"Gạt sang ON.",
+   sets:[{label:"Cách dùng",opts:[
+     {n:"ON / OFF",d:"Gạt vòng quanh nút chụp sang ON để bật, OFF để tắt máy."},
+     {n:"Nhấn nửa chừng",d:"Máy lấy nét và đo sáng. Khung lấy nét chuyển xanh và có tiếng bíp là đã nét. Giữ nguyên để khóa nét rồi bố cục lại nếu cần."},
+     {n:"Nhấn hết",d:"Chụp ảnh. Nhấn nhẹ nhàng, không giật tay để tránh rung."}]}]},
+  {id:"fn1",v:"tren",x:548,y:128,r:7,name:"Nút quay phim (Fn1)",where:"Mặt trên, nút đỏ bên phải nút chụp",
+   what:"Nhấn một lần để bắt đầu quay video, nhấn lần nữa để dừng. Đây cũng là nút chức năng Fn1, có thể gán chức năng khác trong menu.",
+   tip:"X-T10 quay tối đa Full HD."},
+  {id:"ev",v:"tren",x:538,y:183,r:24,name:"Bánh bù sáng",where:"Mặt trên, góc phải phía sau",
+   what:"Làm ảnh sáng hơn hoặc tối hơn so với mức máy tự đo, từ −3 đến +3. Các số là nấc nguyên, hai chấm giữa các số là 1/3 và 2/3 nấc.",
+   tip:"Đây là bánh bạn sẽ chỉnh nhiều nhất ở chế độ P, A, S. Ở chế độ M bánh này không làm đổi độ sáng ảnh.",
+   preset:"Đặt ở 0.",
+   sets:[{label:"Mức bù sáng",cap:"Minh họa cùng một cảnh với các mức bù sáng.",opts:[
+     {n:"−3",d:"Tối nhất. Hiếm khi cần, trừ khi chụp chủ thể rất sáng trên nền đen.",fx:{b:-1.7}},
+     {n:"−2",d:"Tối hẳn. Hợp sân khấu, ánh đèn trong đêm, ảnh tạo không khí.",fx:{b:-1.35}},
+     {n:"−1",d:"Tối hơn rõ. Giữ chi tiết bầu trời sáng, màu đậm hơn.",fx:{b:-0.75}},
+     {n:"−2/3",d:"Tối vừa. Hợp hoàng hôn để giữ màu trời.",fx:{b:-0.5}},
+     {n:"−1/3",d:"Tối nhẹ. Hay dùng cho phong cảnh để trời xanh đậm hơn.",fx:{b:-0.25}},
+     {n:"0",d:"Đúng mức máy tự đo. Điểm bắt đầu cho mọi cảnh.",fx:{}},
+     {n:"+1/3",d:"Sáng nhẹ. Hợp chân dung, da trông tươi hơn.",fx:{b:0.25}},
+     {n:"+2/3",d:"Sáng vừa. Hợp phong cách ảnh trong trẻo, nhẹ nhàng.",fx:{b:0.5}},
+     {n:"+1",d:"Sáng hơn rõ. Hợp nền trắng như biển, tường trắng, tuyết.",fx:{b:0.75}},
+     {n:"+2",d:"Rất sáng, dễ mất chi tiết vùng sáng. Dùng khi chủ thể đứng ngược sáng mạnh.",fx:{b:1.35}},
+     {n:"+3",d:"Sáng nhất. Hầu như chỉ dùng khi ngược sáng rất gắt.",fx:{b:1.7}}]}]},
+
+  {id:"play",v:"sau",x:185,y:108,r:10,name:"Nút xem ảnh",where:"Mặt sau, góc trên bên trái",
+   what:"Xem lại ảnh đã chụp. Dùng 4 nút điều hướng để chuyển ảnh, nhấn nút chụp nửa chừng để quay lại chụp ngay.",
+   tip:"Phóng to ảnh để kiểm tra nét trước khi rời chỗ chụp."},
+  {id:"del",v:"sau",x:218,y:108,r:10,name:"Nút xóa",where:"Mặt sau, cạnh nút xem ảnh",
+   what:"Xóa ảnh đang xem. Trong chế độ xem ảnh, nhấn nút này rồi xác nhận.",
+   tip:"Nên xóa ảnh trên máy tính sau khi xem kỹ, tránh xóa nhầm."},
+  {id:"diopter",v:"sau",x:291,y:110,r:12,name:"Núm chỉnh diopter",where:"Mặt sau, cạnh kính ngắm",
+   what:"Chỉnh độ nét của kính ngắm cho hợp với mắt bạn. Nhìn vào kính ngắm và xoay núm đến khi chữ hiện rõ nét.",
+   tip:"Nếu bạn cận nhẹ, chỉnh núm này có thể giúp nhìn rõ mà không cần đeo kính."},
+  {id:"evf",v:"sau",x:340,y:112,r:30,name:"Kính ngắm và cảm biến mắt",where:"Mặt sau, chính giữa trên",
+   what:"Màn hình nhỏ để nhìn khi áp mắt. Cảm biến phía trên tự chuyển hiển thị khi bạn đưa mắt lại gần.",
+   tip:"Cầm máy sát mắt giúp tay ổn định hơn, ảnh ít rung khi tốc độ chậm."},
+  {id:"view",v:"sau",x:398,y:110,r:8,name:"Nút VIEW",where:"Mặt sau, bên phải kính ngắm",
+   what:"Chọn nơi hiển thị hình ảnh. Nhấn nhiều lần để đổi.",
+   tip:"Nếu màn hình sau bỗng tắt, có thể bạn đã nhấn nhầm nút này.",
+   sets:[{label:"Các kiểu hiển thị",opts:[
+     {n:"Cảm biến mắt",d:"Tự chuyển: áp mắt thì dùng kính ngắm, rời mắt thì dùng màn hình. Nên để mặc định kiểu này."},
+     {n:"Chỉ kính ngắm",d:"Màn hình sau luôn tắt. Tiết kiệm pin, hợp chụp ngoài nắng."},
+     {n:"Chỉ màn hình",d:"Kính ngắm luôn tắt. Hợp khi chụp ở góc thấp với màn hình nghiêng."}]}]},
+  {id:"ael",v:"sau",x:428,y:110,r:10,name:"Nút AE-L",where:"Mặt sau, trên bên phải",
+   what:"Khóa độ sáng hiện tại. Hướng máy vào vùng muốn đo sáng, giữ nút, rồi bố cục lại và chụp.",
+   tip:"Hữu ích khi chụp người ngược sáng: khóa sáng ở mặt người rồi mới bố cục."},
+  {id:"rear",v:"sau",x:465,y:96,r:16,name:"Bánh xoay sau",where:"Mặt sau, góc trên bên phải",
+   what:"Bánh điều khiển cho ngón cái, dùng để thay đổi giá trị và di chuyển trong menu. Với ống kính không có vòng khẩu (dòng XC), khẩu độ chỉnh bằng bánh xoay; nếu bánh này không đổi khẩu, thử bánh xoay trước.",
+   tip:"Chức năng của bánh có thể khác tùy chế độ đang chụp."},
+  {id:"afl",v:"sau",x:502,y:112,r:10,name:"Nút AF-L",where:"Mặt sau, góc trên bên phải",
+   what:"Khóa nét hiện tại. Lấy nét vào chủ thể, giữ nút, rồi bố cục lại và chụp.",
+   tip:"Có thể gán chức năng khác cho nút này trong menu."},
+  {id:"q",v:"sau",x:500,y:152,r:10,name:"Nút Q (menu nhanh)",where:"Mặt sau, bên phải",
+   what:"Mở menu nhanh để chỉnh các thiết lập hay dùng mà không vào menu chính. Dùng 4 nút để chọn mục, xoay bánh sau để đổi giá trị. Khi menu nhanh đang mở, nhấn giữ Q để chỉnh các bộ cài đặt tùy chỉnh (nơi lưu recipe màu).",
+   tip:"Các hình minh họa dưới đây giả sử chụp ngoài trời nắng.",
+   preset:"Nhấn Q: ISO để Auto, cân bằng trắng Auto, chọn giả lập màu bạn thích.",
+   sets:[
+    {label:"Bộ cài đặt (C1–C7)",opts:[
+     {n:"Base",d:"Dùng các thiết lập hiện tại trong menu, không nạp bộ nào."},
+     {n:"C1–C7",d:"Nạp một trong 7 bộ đã lưu: giả lập màu, ISO, DR, cân bằng trắng (không gồm mức lệch R/B), Highlight, Shadow, Color, Sharpness, giảm nhiễu. Lưu bằng cách nhấn giữ Q khi menu nhanh đang mở, hoặc vào menu Image Quality Setting → Edit/Save Custom Setting. Bù sáng không lưu được, chỉnh bằng bánh bù sáng."}]},
+    {label:"ISO",cap:"Minh họa khi giữ nguyên khẩu độ và tốc độ.",opts:[
+     {n:"L (100)",d:"ISO mở rộng thấp. Dùng khi muốn tốc độ chậm hơn ngoài nắng, nhưng vùng sáng dễ cháy hơn và không dùng được DR200/400.",fx:{b:-1.5}},
+     {n:"200",d:"Ảnh sạch, mịn nhất. Dùng khi đủ sáng. Nếu trời tối, máy phải hạ tốc độ, dễ rung.",fx:{b:-1.1}},
+     {n:"800",d:"Vẫn rất sạch. Hợp trong nhà có cửa sổ, trời râm.",fx:{n:0.05}},
+     {n:"1600",d:"Hạt bắt đầu thấy khi phóng to. Hợp quán cà phê, buổi tối có đèn.",fx:{b:0.45,n:0.11}},
+     {n:"3200",d:"Hạt rõ hơn nhưng vẫn dùng tốt để đăng mạng.",fx:{b:0.9,n:0.19}},
+     {n:"6400",d:"Nhiều hạt, màu kém hơn. Chỉ dùng khi thật tối.",fx:{b:1.3,n:0.3}},
+     {n:"H (12800+)",d:"ISO mở rộng cao, chỉ lưu JPEG. Rất nhiều hạt, dùng khi không còn cách nào khác.",fx:{b:1.6,n:0.42}},
+     {n:"Auto",d:"Máy tự tăng ISO khi thiếu sáng, trong giới hạn bạn đặt. Nên đặt mức tối đa khoảng 3200 khi mới tập.",fx:{n:0.04}}]},
+    {label:"Cân bằng trắng",cap:"Minh họa cảnh chụp ngoài nắng với từng thiết lập.",opts:[
+     {n:"Auto",d:"Máy tự tính. Đúng trong đa số trường hợp.",fx:{}},
+     {n:"Nắng",d:"Cố định theo ánh nắng ban ngày. Màu ổn định giữa các ảnh, hợp chụp phim kiểu cổ điển.",fx:{}},
+     {n:"Bóng râm",d:"Bù cho ánh sáng xanh trong bóng râm. Dùng ngoài nắng sẽ làm ảnh ấm, vàng hơn.",fx:{mat:MAT("1.12 0 0 0 0.02 0 1.02 0 0 0 0 0 0.82 0 0 0 0 0 1 0")}},
+     {n:"Đèn sợi đốt",d:"Bù cho đèn vàng trong nhà. Dùng ngoài nắng ảnh sẽ ám xanh lạnh.",fx:{mat:MAT("0.78 0 0 0 0 0 0.95 0 0 0 0 0 1.25 0 0.04 0 0 0 1 0")}},
+     {n:"Huỳnh quang",d:"Bù cho đèn huỳnh quang. Dùng ngoài nắng ảnh hơi ám tím xanh.",fx:{mat:MAT("0.92 0 0 0 0.02 0 0.88 0 0 0 0 0 1.1 0 0.03 0 0 0 1 0")}}]},
+    {label:"Giả lập màu (Film Simulation)",cap:"Minh họa gần đúng tinh thần từng giả lập màu.",opts:[
+     {n:"Provia",d:"Màu chuẩn, trung tính, dùng được cho mọi thứ.",fx:{}},
+     {n:"Velvia",d:"Màu rất rực, tương phản cao. Hợp phong cảnh, trời xanh, cây lá.",fx:{mat:SAT(1.65)}},
+     {n:"Astia",d:"Màu mềm, tông da đẹp. Hợp chân dung.",fx:{mat:SAT(1.12),b:0.1}},
+     {n:"Classic Chrome",d:"Màu trầm, hơi bạc, kiểu ảnh tạp chí cũ. Hợp đường phố.",fx:{mat:MAT("0.78 0.14 0.03 0 0 0.1 0.8 0.08 0 0 0.08 0.18 0.7 0 0.04 0 0 0 1 0")}},
+     {n:"Pro Neg Hi",d:"Màu nhẹ nhưng tương phản cao hơn Pro Neg Std. Hợp chân dung ngoài trời.",fx:{mat:SAT(0.92)}},
+     {n:"Pro Neg Std",d:"Màu nhẹ, tương phản thấp, da tự nhiên.",fx:{mat:SAT(0.82),b:0.12}},
+     {n:"Monochrome",d:"Đen trắng tiêu chuẩn.",fx:{mat:SAT(0)}},
+     {n:"Mono + Ye",d:"Đen trắng với lọc vàng: trời hơi tối lại, tương phản nhẹ nhàng.",fx:{mat:MAT("0.6 0.4 0 0 0 0.6 0.4 0 0 0 0.6 0.4 0 0 0 0 0 0 1 0")}},
+     {n:"Mono + R",d:"Đen trắng với lọc đỏ: trời xanh tối lại, mây và da sáng hơn, tương phản mạnh.",fx:{mat:MAT("0.9 0.35 -0.25 0 0 0.9 0.35 -0.25 0 0 0.9 0.35 -0.25 0 0 0 0 0 1 0")}},
+     {n:"Mono + G",d:"Đen trắng với lọc xanh lá: da người sáng mịn hơn, lá cây sáng lên.",fx:{mat:MAT("0.2 0.75 0.05 0 0 0.2 0.75 0.05 0 0 0.2 0.75 0.05 0 0 0 0 0 1 0")}},
+     {n:"Sepia",d:"Tông nâu cổ.",fx:{mat:MAT("0.393 0.769 0.189 0 0 0.349 0.686 0.168 0 0 0.272 0.534 0.131 0 0 0 0 0 1 0")}}]},
+    {label:"Dải tương phản động (DR)",cap:"Chú ý vùng mây sáng phía trên bên phải.",opts:[
+     {n:"DR100",d:"Tắt. Vùng rất sáng như mây, bầu trời dễ bị cháy trắng mất chi tiết.",fx:{dr:0}},
+     {n:"DR200",d:"Giữ thêm chi tiết vùng sáng. Cần ISO từ 400 trở lên.",fx:{dr:1}},
+     {n:"DR400",d:"Giữ chi tiết vùng sáng tốt nhất. Cần ISO từ 800 trở lên, ảnh có thể nhiều hạt hơn.",fx:{dr:2,n:0.05}},
+     {n:"Auto",d:"Máy tự chọn mức phù hợp với cảnh.",fx:{dr:1}}]}]},
+  {id:"pad",v:"sau",x:470,y:222,r:36,name:"MENU/OK và 4 nút điều hướng",where:"Mặt sau, bên phải màn hình",
+   what:"Nút giữa mở menu chính và xác nhận. Bốn nút xung quanh để di chuyển, đồng thời là các nút chức năng gán được. Nhấn giữ nút giữa để khóa các nút, tránh bấm nhầm; nhấn giữ lần nữa để mở khóa.",
+   tip:"Nếu các nút bỗng không phản hồi, có thể bạn đã vô tình khóa chúng."},
+  {id:"disp",v:"sau",x:500,y:288,r:10,name:"Nút DISP/BACK",where:"Mặt sau, góc dưới bên phải",
+   what:"Đổi kiểu hiển thị thông tin trên màn hình, và quay lại khi đang ở menu.",
+   tip:"Histogram giúp đánh giá độ sáng chính xác hơn nhìn màn hình, nhất là ngoài nắng.",
+   preset:"Chọn kiểu hiển thị có histogram và lưới bố cục.",
+   sets:[{label:"Hiển thị khi chụp",cap:"Minh họa những gì hiện trên màn hình.",opts:[
+     {n:"Tối giản",d:"Chỉ hình ảnh và vài thông số chính. Dễ tập trung bố cục.",fx:{info:1}},
+     {n:"Có lưới",d:"Lưới 3x3 giúp đặt chủ thể vào các điểm giao, giữ đường chân trời thẳng.",fx:{info:1,grid:1}},
+     {n:"Lưới + histogram",d:"Thêm biểu đồ độ sáng. Dồn sát mép phải là cháy sáng, sát mép trái là mất chi tiết vùng tối.",fx:{info:1,grid:1,hist:1}}]}]},
+  {id:"lcd",v:"sau",x:292,y:222,r:40,name:"Màn hình LCD",where:"Mặt sau",
+   what:"Hiển thị hình ảnh và thông số. Màn hình nghiêng lên xuống được, không có cảm ứng.",
+   tip:"Kéo nghiêng màn hình lên khi chụp thấp, nghiêng xuống khi giơ máy cao."},
+
+  {id:"front",v:"truoc",x:150,y:128,r:18,name:"Bánh xoay trước",where:"Mặt trước, đầu tay cầm",
+   what:"Bánh điều khiển cho ngón trỏ. Nhấn vào giữa bánh là nút chức năng Fn2. Ở chế độ P, xoay để đổi cặp tốc độ và khẩu độ mà vẫn giữ độ sáng. Với ống kính không có vòng khẩu, thử bánh này nếu bánh sau không đổi khẩu.",
+   tip:"Chức năng của bánh có thể khác tùy chế độ đang chụp."},
+  {id:"lamp",v:"truoc",x:218,y:140,r:8,name:"Đèn trợ sáng lấy nét",where:"Mặt trước, cạnh tay cầm",
+   what:"Sáng lên giúp lấy nét trong chỗ tối, và nhấp nháy khi dùng hẹn giờ. Có thể tắt trong menu.",
+   tip:"Đừng che đèn này bằng ngón tay khi chụp trong tối."},
+  {id:"mount",v:"truoc",x:340,y:208,r:72,name:"Ống kính và khẩu độ",where:"Mặt trước, chính giữa",
+   what:"XF 18-55mm có vòng khẩu và công tắc khẩu độ: gạt sang A để máy tự chọn, gạt về vị trí còn lại rồi xoay vòng để tự chọn. Ống kính XC không có vòng khẩu, chỉnh khẩu bằng bánh xoay trên thân máy.",
+   tip:"Khẩu to nhất phụ thuộc ống kính và mức zoom: XF 18-55mm mở được f/2.8, lens XC khoảng f/3.5.",
+   preset:"Tự chọn khẩu độ (không để A). Chân dung: mở to nhất. Phong cảnh: khoảng f/8.",
+   sets:[{label:"Khẩu độ",cap:"Minh họa khi giữ nguyên tốc độ và ISO; chú ý độ mờ của hàng cây phía sau.",opts:[
+     {n:"f/2.8",d:"Khẩu to: nền mờ mạnh, chủ thể nổi bật, nhiều sáng vào. Hợp chân dung, chụp trong nhà.",fx:{bg:3.4,b:0.7}},
+     {n:"f/4",d:"Nền vẫn mờ rõ. Mức tốt cho chân dung với lens kit.",fx:{bg:2.3,b:0.35}},
+     {n:"f/5.6",d:"Cân bằng giữa nền mờ và độ nét. Hợp chụp đời thường, đường phố.",fx:{bg:1.3}},
+     {n:"f/8",d:"Hầu hết khung hình đều nét. Mức “ngọt” nhất của nhiều ống kính, hợp phong cảnh.",fx:{bg:0.5,b:-0.35}},
+     {n:"f/11",d:"Gần như mọi thứ đều nét, ít sáng vào. Dùng cho phong cảnh rộng có tiền cảnh.",fx:{bg:0,b:-0.7}},
+     {n:"f/16",d:"Khẩu rất nhỏ: dễ lộ bụi cảm biến và ảnh có thể kém nét nhẹ do nhiễu xạ. Chỉ dùng khi cần.",fx:{bg:0,b:-1.05,soft:0.4}}]}]},
+  {id:"lensrel",v:"truoc",x:436,y:168,r:10,name:"Nút tháo ống kính",where:"Mặt trước, cạnh ngàm",
+   what:"Nhấn giữ nút, xoay ống kính rồi rút ra. Khi lắp, khớp chấm đỏ trên ống kính với chấm trên thân máy rồi xoay đến khi nghe tiếng tách.",
+   tip:"Tắt máy và hướng ngàm xuống đất khi thay ống kính để hạn chế bụi."},
+  {id:"focus",v:"truoc",x:441,y:259,r:14,name:"Nút chọn chế độ lấy nét",where:"Mặt trước, góc dưới ngàm",
+   what:"Chọn cách máy lấy nét khi bạn nhấn nửa chừng nút chụp.",
+   tip:"Nếu máy không chịu lấy nét khi nhấn nút chụp, kiểm tra xem có đang ở M không.",
+   preset:"Gạt sang S.",
+   sets:[{label:"Ba vị trí",cap:"Minh họa: quả bóng lăn về phía máy ảnh trong lúc bạn chụp.",opts:[
+     {n:"S",d:"Lấy nét một lần rồi khóa lại. Chủ thể đứng yên thì nét chuẩn; chủ thể di chuyển sau khi khóa sẽ bị mờ nét.",fx:{ballBlur:2.6}},
+     {n:"C",d:"Liên tục bám nét khi bạn giữ nửa chừng. Hợp người chạy, trẻ em, thú cưng, xe cộ.",fx:{}},
+     {n:"M",d:"Lấy nét tay bằng vòng lấy nét trên ống kính. Bật focus peaking để thấy vùng nét được tô màu. Hợp chụp đồ vật, macro, ban đêm.",fx:{ballBlur:1.6,subjBlur:1.6}}]}]}
+];
+
+const STEPS = ["release","auto","shutter","mount","ev","focus","drive","q","disp"];
+const NS = "http://www.w3.org/2000/svg";
+let view="tren", sel=null, preset=false;
+const optSel = {};
+const panel=document.getElementById("panel");
+const chips=document.getElementById("chips");
+const stage=document.getElementById("stage");
+
+function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+C.forEach(c=>{
+  const layer=document.querySelector("#v-"+c.v+" .hslayer");
+  const g=el("g",{class:"hs"+(c.preset?" has-preset":""),tabindex:"0",role:"button","aria-label":c.name,"data-id":c.id});
+  g.appendChild(el("circle",{class:"hit",cx:c.x,cy:c.y,r:Math.max(c.r+8,20)}));
+  g.appendChild(el("circle",{class:"ring",cx:c.x,cy:c.y,r:c.r+5}));
+  const a=Math.PI/4,br=c.r+5;
+  g.appendChild(el("circle",{class:"badge",cx:c.x+br*Math.cos(a),cy:c.y-br*Math.sin(a),r:6}));
+  g.addEventListener("click",()=>select(c.id));
+  g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(c.id);}});
+  layer.appendChild(g);
+});
+
+let uid=0;
+function scene(fx){
+  const f=Object.assign({b:0,bg:0,m:0,shake:0,n:0,mat:null,dr:null,subj:0,grid:0,hist:0,info:0,ballBlur:0,subjBlur:0,soft:0},fx||{});
+  const k="p"+(uid++);
+  const blurAll=f.shake+f.soft;
+  let mat="";
+  if(f.mat)mat='<feColorMatrix type="'+f.mat.t+'" values="'+f.mat.v+'"/>';
+  const drLv=f.dr===null?1:f.dr;
+  const cloud='<ellipse cx="248" cy="38" rx="52" ry="22" fill="#FFFFFF"/><ellipse cx="216" cy="46" rx="30" ry="15" fill="#FFFFFF"/>'+
+    '<path d="M206 46 Q226 30 250 40 Q270 30 290 42" fill="none" stroke="#B9C7D3" stroke-width="3" opacity="'+(drLv*0.45)+'"/>'+
+    '<path d="M214 52 Q238 44 262 52 Q278 46 292 52" fill="none" stroke="#C5D1DB" stroke-width="2.5" opacity="'+(drLv*0.4)+'"/>'+
+    (drLv===0?'<ellipse cx="244" cy="42" rx="62" ry="26" fill="#FFFFFF"/>':'');
+  let s='<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ảnh minh họa"><defs>'+
+    '<filter id="'+k+'bg" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="'+f.bg+'"/></filter>'+
+    '<filter id="'+k+'m" x="-80%" y="-20%" width="260%" height="140%"><feGaussianBlur stdDeviation="'+(f.m+f.ballBlur)+' '+f.ballBlur+'"/></filter>'+
+    '<filter id="'+k+'s" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="'+f.subjBlur+'"/></filter>'+
+    '<filter id="'+k+'a" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="'+blurAll+'"/>'+mat+'</filter>'+
+    '<filter id="'+k+'n"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7"/><feColorMatrix type="saturate" values="0"/></filter>'+
+    '<clipPath id="'+k+'c"><rect width="320" height="200"/></clipPath></defs>'+
+    '<g clip-path="url(#'+k+'c)"><g filter="url(#'+k+'a)">'+
+      '<rect width="320" height="200" fill="#7DB8E3"/>'+cloud+
+      '<g filter="url(#'+k+'bg)">'+
+        '<path d="M0 120 Q60 88 120 104 Q190 80 250 100 Q290 92 320 104 L320 160 L0 160Z" fill="#7FA36A"/>'+
+        '<circle cx="30" cy="102" r="20" fill="#3F7A3A"/><circle cx="62" cy="96" r="16" fill="#4C8A43"/>'+
+        '<circle cx="190" cy="96" r="18" fill="#3F7A3A"/><circle cx="222" cy="100" r="14" fill="#4C8A43"/>'+
+        '<circle cx="292" cy="98" r="20" fill="#3F7A3A"/>'+
+        '<rect x="262" y="70" width="10" height="40" fill="#8A6F55"/><circle cx="267" cy="66" r="18" fill="#356E32"/>'+
+      '</g>'+
+      '<rect y="150" width="320" height="50" fill="#C2AA84"/>'+
+      '<g filter="url(#'+k+'s)">'+
+        '<rect x="104" y="96" width="40" height="66" rx="14" fill="#2F5D8A"/>'+
+        '<circle cx="124" cy="80" r="16" fill="#E2B48C"/>'+
+        '<path d="M108 76 Q112 60 126 62 Q140 62 141 78 Q134 68 124 70 Q114 70 108 76Z" fill="#3A2A20"/>'+
+        (f.subj<0?'<rect x="100" y="60" width="48" height="104" rx="14" fill="#000" opacity="'+(-f.subj)+'"/>':'')+
+      '</g>'+
+      '<circle cx="232" cy="164" r="11" fill="#D9443A" filter="url(#'+k+'m)"/>'+
+    '</g>';
+  if(f.b>0)s+='<rect width="320" height="200" fill="#FFFFFF" opacity="'+Math.min(f.b*0.28,0.6)+'"/>';
+  if(f.b<0)s+='<rect width="320" height="200" fill="#000000" opacity="'+Math.min(-f.b*0.3,0.62)+'"/>';
+  if(f.n>0)s+='<rect width="320" height="200" filter="url(#'+k+'n)" opacity="'+f.n+'" style="mix-blend-mode:overlay"/><rect width="320" height="200" filter="url(#'+k+'n)" opacity="'+(f.n*0.5)+'"/>';
+  if(f.grid)s+='<g stroke="#FFFFFF" stroke-opacity=".7" stroke-width="1"><line x1="106.7" y1="0" x2="106.7" y2="200"/><line x1="213.3" y1="0" x2="213.3" y2="200"/><line x1="0" y1="66.7" x2="320" y2="66.7"/><line x1="0" y1="133.3" x2="320" y2="133.3"/></g>';
+  if(f.info)s+='<rect x="0" y="182" width="320" height="18" fill="#000" opacity=".45"/><text x="10" y="195" fill="#FFFFFF" font-size="11" font-family="inherit">1/250   f/5.6   ±0   ISO 400</text>';
+  if(f.hist)s+='<rect x="236" y="8" width="76" height="44" rx="4" fill="#000" opacity=".5"/><path d="M240 48 L246 44 L254 34 L262 24 L270 30 L278 18 L286 26 L294 36 L302 42 L308 48Z" fill="#FFFFFF" opacity=".85"/>';
+  return s+'</g></svg>';
+}
+
+function renderSets(c){
+  if(!c.sets)return "";
+  let h='<div class="opts">';
+  c.sets.forEach((set,si)=>{
+    const key=c.id+":"+si;
+    if(optSel[key]===undefined){const d=set.opts.findIndex(o=>o.n==="Base"||o.n==="0"||o.n==="A"||o.n==="Auto"||o.n==="Provia"||o.n==="S");optSel[key]=d<0?0:d;}
+    const o=set.opts[optSel[key]];
+    h+='<div class="oset"><h3>'+esc(set.label)+'</h3><div class="pills" role="group" aria-label="'+esc(set.label)+'">'+
+      set.opts.map((x,i)=>'<button class="pill" data-k="'+key+'" data-i="'+i+'" aria-pressed="'+(i===optSel[key])+'">'+esc(x.n)+'</button>').join("")+
+      '</div><p class="odesc"><strong>'+esc(o.n)+':</strong> '+esc(o.d)+'</p>';
+    if(o.fx)h+='<div class="prev">'+scene(o.fx)+'</div><p class="cap">'+esc(set.cap||"Hình minh họa đơn giản, các thông số khác giữ nguyên.")+'</p>';
+    h+='</div>';
+  });
+  return h+'</div>';
+}
+
+function renderPanel(){
+  const c=C.find(x=>x.id===sel);
+  if(!c){
+    if(preset){
+      panel.innerHTML='<h2>Thiết lập chế độ A cho người mới</h2><p class="where">Làm lần lượt các bước dưới đây. Chạm vào từng bước để xem nút đó nằm ở đâu.</p><ol class="steps">'+
+        STEPS.map(id=>{const s=C.find(x=>x.id===id);return '<li><button data-go="'+id+'">'+esc(s.name)+'</button>: '+esc(s.preset)+'</li>';}).join("")+
+        '</ol><div class="setbox">Xong các bước này, máy đang ở chế độ <strong>A (ưu tiên khẩu độ)</strong>: bạn chọn khẩu, máy tự chọn tốc độ. Khi chụp, chủ yếu chỉ cần chỉnh khẩu độ và bánh bù sáng.</div>';
+      panel.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{const t=C.find(x=>x.id===b.dataset.go);setView(t.v);select(t.id);}));
+    }else{
+      panel.innerHTML='<h2>Chọn một nút</h2><p class="empty">Chạm vào vòng tròn vàng trên hình, hoặc chọn tên nút ở dưới hình, để xem hướng dẫn.</p><p class="empty">Với các nút có nhiều lựa chọn như bánh tốc độ, bù sáng, khẩu độ hay nút Q, bạn chọn từng lựa chọn để xem ảnh minh họa thay đổi thế nào.</p>';
+    }
+    return;
+  }
+  let h='<h2>'+esc(c.name)+'</h2><p class="where">'+esc(c.where)+'</p><p>'+esc(c.what)+'</p>';
+  if(c.tip)h+='<p class="cap" style="font-size:14px">'+esc(c.tip)+'</p>';
+  if(preset&&c.preset)h+='<div class="setbox"><strong>Thiết lập chế độ A:</strong> '+esc(c.preset)+'</div>';
+  h+=renderSets(c);
+  if(preset)h+='<p style="margin-top:16px"><button class="chip" id="backSteps">Xem lại các bước thiết lập</button></p>';
+  panel.innerHTML=h;
+  panel.querySelectorAll(".pill").forEach(b=>b.addEventListener("click",()=>{
+    optSel[b.dataset.k]=+b.dataset.i;
+    const y=window.scrollY;renderPanel();window.scrollTo(0,y);
+    const nb=panel.querySelector('.pill[data-k="'+b.dataset.k+'"][data-i="'+b.dataset.i+'"]');if(nb)nb.focus({preventScroll:true});
+  }));
+  const bb=document.getElementById("backSteps");
+  if(bb)bb.addEventListener("click",()=>select(null));
+}
+
+function renderChips(){
+  chips.innerHTML="";
+  C.filter(c=>c.v===view).forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip"+(c.preset?" has-preset":"");
+    b.textContent=c.name;
+    b.setAttribute("aria-current",c.id===sel?"true":"false");
+    b.addEventListener("click",()=>select(c.id));
+    chips.appendChild(b);
+  });
+}
+
+function select(id){
+  sel=id;
+  document.querySelectorAll(".hs").forEach(g=>g.classList.toggle("sel",g.dataset.id===id));
+  renderChips();renderPanel();
+}
+
+function setView(v){
+  if(!["tren","sau","truoc"].includes(v))v="tren";
+  view=v;
+  ["tren","sau","truoc"].forEach(k=>document.getElementById("v-"+k).toggleAttribute("hidden",k!==v));
+  document.querySelectorAll(".views button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.view===v?"true":"false"));
+  const cur=C.find(x=>x.id===sel);
+  if(cur&&cur.v!==v)sel=null;
+  try{if(location.hash!=="#"+v)history.replaceState(null,"","#"+v);}catch(e){}
+  select(sel);
+}
+
+document.querySelectorAll(".views button").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
+document.getElementById("presetBtn").addEventListener("click",e=>{
+  preset=!preset;
+  e.currentTarget.setAttribute("aria-pressed",preset?"true":"false");
+  stage.classList.toggle("show-preset",preset);
+  renderChips();renderPanel();
+});
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(h&&h!==view)setView(h);});
+let startView="tren";try{startView=location.hash.slice(1)||"tren";}catch(e){}
+setView(startView);
+
+</script>
+</body>
+</html>

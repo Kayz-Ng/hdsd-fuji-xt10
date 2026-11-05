@@ -1,0 +1,1 @@
+# hdsd-fuji-xt10

@@ -83,6 +83,10 @@ footer{color:var(--muted);font-size:13px;margin-top:22px;max-width:70ch}
 .prev svg{display:block;width:100%;height:auto}
 .cap{font-size:13px;color:var(--muted);margin:2px 0 0}
 .panel{max-height:none}
+.mean{background:var(--bg);border-radius:12px;padding:12px 16px 6px;margin:14px 0 4px}
+.mean h3{margin:0 0 6px}
+.mean p{margin:0 0 8px}
+.smean{color:var(--muted);font-size:15px;margin:0 0 8px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -279,8 +283,13 @@ const C = [
    what:"Khóa độ sáng hiện tại. Hướng máy vào vùng muốn đo sáng, giữ nút, rồi bố cục lại và chụp.",
    tip:"Hữu ích khi chụp người ngược sáng: khóa sáng ở mặt người rồi mới bố cục."},
   {id:"rear",v:"sau",x:465,y:96,r:16,name:"Bánh xoay sau",where:"Mặt sau, góc trên bên phải",
-   what:"Bánh điều khiển cho ngón cái, dùng để thay đổi giá trị và di chuyển trong menu. Với ống kính không có vòng khẩu (dòng XC), khẩu độ chỉnh bằng bánh xoay; nếu bánh này không đổi khẩu, thử bánh xoay trước.",
-   tip:"Chức năng của bánh có thể khác tùy chế độ đang chụp."},
+   what:"Bánh khía răng nhỏ nằm ngang ở góc trên bên phải mặt lưng, ngay dưới ngón cái. Bánh không in số vì nó không cố định một việc: máy đang ở màn hình nào thì nó chỉnh thứ đó. Chọn từng tình huống bên dưới để xem nó làm gì.",
+   tip:"Dùng lens XC ở chế độ A, việc bạn hay làm nhất với bánh này là xoay để chọn khẩu độ.",
+   sets:[{label:"Tùy tình huống",opts:[
+     {n:"Lens XC",d:"Với ống kính không có vòng khẩu (XC 16-50mm, XC 15-45mm, XF 27mm), xoay bánh sau để chọn khẩu độ theo từng 1/3 nấc. Xoay qua khỏi mức khẩu nhỏ nhất sẽ ra A (máy tự chọn khẩu). Cách chỉnh này phụ thuộc mục Aperture Setting trong menu chụp, nên để Auto + Manual."},
+     {n:"Lens có vòng khẩu",d:"Với ống kính như XF 18-55mm, bình thường bạn xoay vòng khẩu trên ống kính. Khi gạt công tắc khẩu trên ống kính về A, sách hướng dẫn cho biết có thể xoay bánh sau để chỉnh khẩu."},
+     {n:"Trong menu Q",d:"Bấm Q, dùng 4 nút điều hướng để chọn mục như ISO, giả lập màu, rồi xoay bánh sau để đổi giá trị của mục đó."},
+     {n:"Lấy nét tay",d:"Ở chế độ lấy nét M, nhấn vào bánh sau để bật hoặc tắt phóng to vùng lấy nét, xoay để đổi mức phóng to. Rất tiện để kiểm tra nét."}]}]},
   {id:"afl",v:"sau",x:502,y:112,r:10,name:"Nút AF-L",where:"Mặt sau, góc trên bên phải",
    what:"Khóa nét hiện tại. Lấy nét vào chủ thể, giữ nút, rồi bố cục lại và chụp.",
    tip:"Có thể gán chức năng khác cho nút này trong menu."},
@@ -340,13 +349,13 @@ const C = [
    tip:"Kéo nghiêng màn hình lên khi chụp thấp, nghiêng xuống khi giơ máy cao."},
 
   {id:"front",v:"truoc",x:150,y:128,r:18,name:"Bánh xoay trước",where:"Mặt trước, đầu tay cầm",
-   what:"Bánh điều khiển cho ngón trỏ. Nhấn vào giữa bánh là nút chức năng Fn2. Ở chế độ P, xoay để đổi cặp tốc độ và khẩu độ mà vẫn giữ độ sáng. Với ống kính không có vòng khẩu, thử bánh này nếu bánh sau không đổi khẩu.",
+   what:"Bánh điều khiển cho ngón trỏ. Nhấn vào giữa bánh là nút chức năng Fn2. Ở chế độ P, xoay để đổi cặp tốc độ và khẩu độ mà vẫn giữ độ sáng.",
    tip:"Chức năng của bánh có thể khác tùy chế độ đang chụp."},
   {id:"lamp",v:"truoc",x:218,y:140,r:8,name:"Đèn trợ sáng lấy nét",where:"Mặt trước, cạnh tay cầm",
    what:"Sáng lên giúp lấy nét trong chỗ tối, và nhấp nháy khi dùng hẹn giờ. Có thể tắt trong menu.",
    tip:"Đừng che đèn này bằng ngón tay khi chụp trong tối."},
   {id:"mount",v:"truoc",x:340,y:208,r:72,name:"Ống kính và khẩu độ",where:"Mặt trước, chính giữa",
-   what:"XF 18-55mm có vòng khẩu và công tắc khẩu độ: gạt sang A để máy tự chọn, gạt về vị trí còn lại rồi xoay vòng để tự chọn. Ống kính XC không có vòng khẩu, chỉnh khẩu bằng bánh xoay trên thân máy.",
+   what:"XF 18-55mm có vòng khẩu và công tắc khẩu độ: gạt sang A để máy tự chọn, gạt về vị trí còn lại rồi xoay vòng để tự chọn. Ống kính XC không có vòng khẩu, chỉnh khẩu bằng bánh xoay sau ở mặt lưng máy; xoay qua khỏi mức khẩu nhỏ nhất để chọn A.",
    tip:"Khẩu to nhất phụ thuộc ống kính và mức zoom: XF 18-55mm mở được f/2.8, lens XC khoảng f/3.5.",
    preset:"Tự chọn khẩu độ (không để A). Chân dung: mở to nhất. Phong cảnh: khoảng f/8.",
    sets:[{label:"Khẩu độ",cap:"Minh họa khi giữ nguyên tốc độ và ISO; chú ý độ mờ của hàng cây phía sau.",opts:[
@@ -369,6 +378,37 @@ const C = [
      {n:"M",d:"Lấy nét tay bằng vòng lấy nét trên ống kính. Bật focus peaking để thấy vùng nét được tô màu. Hợp chụp đồ vật, macro, ban đêm.",fx:{ballBlur:1.6,subjBlur:1.6}}]}]}
 ];
 
+const MEAN = {
+  drive:["Drive là cách máy xử lý mỗi lần bạn nhấn nút chụp: chụp một tấm, chụp một loạt, hay chụp nhiều tấm với thiết lập khác nhau.","Bù trừ (bracketing) nghĩa là chụp “kẹp” quanh một thiết lập, ví dụ một tấm tối hơn, một tấm đúng, một tấm sáng hơn, rồi về nhà chọn tấm đẹp nhất."],
+  flash:["Flash là nguồn sáng chớp cực ngắn, chỉ vài phần nghìn giây. Ánh sáng flash yếu đi rất nhanh theo khoảng cách, nên chỉ chủ thể ở gần sáng lên, nền phía xa gần như không đổi.","Dùng flash ban ngày để làm sáng phần bị tối (fill flash) thường đẹp hơn dùng flash trong đêm."],
+  shoe:["Hot shoe là chân cắm có tiếp điểm điện. Nhờ có điện (“hot”), máy trao đổi thông tin được với đèn flash rời để tự chỉnh công suất đèn. Loại chân chỉ để gắn cơ học, không có tiếp điểm, gọi là cold shoe."],
+  shutter:["Màn trập là tấm chắn trước cảm biến. Khi chụp, nó mở ra trong một khoảng thời gian rồi đóng lại. Khoảng thời gian đó gọi là tốc độ màn trập, hay thời gian phơi sáng.","Hình dung như chớp mắt: mở mắt càng lâu thì nhận càng nhiều ánh sáng, nhưng nếu vật hoặc tay bạn chuyển động trong lúc đó thì hình bị nhòe.","Mỗi lần thời gian tăng gấp đôi (1/250 lên 1/125) thì ánh sáng vào cũng gấp đôi. Mức tăng gấp đôi này gọi là 1 stop, hay 1 nấc."],
+  auto:["Ở chế độ tự động (SR+), máy tự nhận diện cảnh như chân dung, phong cảnh, cận cảnh, ban đêm, rồi tự chọn mọi thông số.","Vị trí còn lại không có nghĩa là bạn phải tự chỉnh hết: máy nghe theo các bánh xoay, và bánh nào để ở A thì máy vẫn tự lo phần đó."],
+  release:["Nhấn nửa chừng tách việc lấy nét và việc chụp thành hai bước, để bạn kiểm tra nét trước khi chụp.","Khóa nét nghĩa là giữ nửa chừng để máy giữ nguyên khoảng cách lấy nét trong lúc bạn xoay máy bố cục lại."],
+  fn1:["Fn là viết tắt của Function, nghĩa là chức năng. Nút Fn là nút bạn tự chọn nhiệm vụ cho nó trong menu, ví dụ đổi giả lập màu, bật lưới, chọn ISO."],
+  ev:["Máy đo sáng luôn cố làm mọi cảnh có độ sáng “trung bình”. Vì vậy cảnh nhiều màu trắng (tuyết, biển, tường trắng) bị chụp tối đi thành xám, còn cảnh nhiều màu đen bị chụp sáng lên.","Bù sáng là cách bạn nói với máy: “Làm sáng hơn hoặc tối hơn mức máy nghĩ là đúng”. Đơn vị là EV: +1 EV là gấp đôi lượng sáng, −1 EV là một nửa.","Ở chế độ A, máy bù bằng cách đổi tốc độ; ở chế độ S, máy đổi khẩu độ; nếu ISO để Auto thì máy có thể đổi cả ISO."],
+  diopter:["Diopter là đơn vị đo độ khúc xạ của thấu kính, giống “số độ” của kính cận hay kính viễn. Núm diopter thêm một chút độ kính vào kính ngắm để hợp với mắt bạn."],
+  evf:["EVF (Electronic ViewFinder) là một màn hình nhỏ đặt trong ống ngắm. Khác kính ngắm quang học của máy DSLR, EVF hiện đúng ảnh sẽ chụp ra, gồm độ sáng, màu và giả lập phim, nên bạn thấy trước kết quả trước khi bấm."],
+  ael:["AE-L là viết tắt của Auto Exposure Lock, nghĩa là khóa phơi sáng. Bình thường máy đo sáng lại mỗi khi bạn đổi khung hình. Khóa lại thì máy giữ nguyên mức sáng đã đo, ví dụ đo ở mặt người, dù sau đó trong khung có bầu trời rất sáng."],
+  afl:["AF-L là viết tắt của AutoFocus Lock, nghĩa là khóa lấy nét. Máy giữ nguyên khoảng cách nét đã lấy, để bạn bố cục lại mà chủ thể vẫn nét."],
+  rear:["Bánh điều khiển (command dial) là bánh đa năng: tác dụng của nó thay đổi theo chế độ chụp và theo màn hình đang mở, khác bánh tốc độ hay bánh bù sáng chỉ làm một việc."],
+  front:["Bánh điều khiển (command dial) là bánh đa năng: tác dụng của nó thay đổi theo chế độ chụp và theo màn hình đang mở.","Program shift ở chế độ P nghĩa là đổi sang cặp tốc độ và khẩu độ khác nhưng cho cùng độ sáng, ví dụ từ 1/250 f/5.6 sang 1/500 f/4."],
+  q:["Q là viết tắt của Quick menu, tức menu nhanh: một bảng gom các thiết lập ảnh hay dùng nhất trên một màn hình, để đổi nhanh mà không phải vào menu chính nhiều tầng."],
+  disp:["DISP là viết tắt của Display, nghĩa là hiển thị. Nút này chọn những thông tin hiện chồng lên hình ảnh khi chụp."],
+  lamp:["Máy lấy nét bằng cách tìm chi tiết và độ tương phản trong ảnh. Trong chỗ tối không đủ chi tiết để máy “bám” vào, nên đèn này chiếu sáng chủ thể giúp máy lấy nét."],
+  mount:["Khẩu độ là độ mở của lá khẩu: các lá kim loại xếp thành một lỗ tròn bên trong ống kính, co giãn như con ngươi mắt. Lỗ càng to thì càng nhiều ánh sáng đi vào.","Khẩu độ ghi bằng số f, ví dụ f/2.8. Số f bằng tiêu cự chia cho đường kính lỗ, nên số càng nhỏ thì lỗ càng to. Mỗi nấc f/2.8 → f/4 → f/5.6 → f/8 → f/11 → f/16 giảm một nửa lượng ánh sáng.","Khẩu độ còn quyết định độ sâu trường ảnh (DOF): khoảng phía trước và phía sau điểm lấy nét mà vẫn trông rõ. Khẩu to thì vùng rõ mỏng, nền mờ đi; người ta gọi là xóa phông, còn các đốm sáng mờ tròn ở nền gọi là bokeh."],
+  lensrel:["X-mount là chuẩn ngàm của Fujifilm, quy định cách ống kính gắn vào thân máy và truyền tín hiệu. Mọi ống kính có chữ XF hoặc XC đều gắn được lên X-T10."],
+  focus:["Lấy nét là dịch chuyển thấu kính trong ống kính để mặt phẳng rõ nét rơi đúng vào chủ thể. Chỉ những gì ở đúng khoảng cách đó mới sắc nét nhất.","S là Single (lấy nét đơn), C là Continuous (lấy nét liên tục), M là Manual (lấy nét tay). Focus peaking là tính năng tô màu viền các vùng đang nét để dễ lấy nét tay."]
+};
+const SETMEAN = {
+  "q:0":"Bộ cài đặt tùy chỉnh giống một “hồ sơ” lưu nhóm thiết lập ảnh. Nhiều người dùng để lưu recipe màu: công thức phối giả lập phim với các thông số như Highlight, Shadow, Color để ra một phong cách màu riêng.",
+  "q:1":"ISO là độ nhạy sáng của cảm biến. Thực chất máy khuếch đại tín hiệu ánh sáng: ISO gấp đôi thì ảnh sáng gấp đôi (1 stop), nhưng nhiễu hạt cũng bị khuếch đại theo. Tên gọi bắt nguồn từ tiêu chuẩn độ nhạy của phim nhựa ngày xưa.",
+  "q:2":"Mỗi nguồn sáng có màu riêng: đèn sợi đốt ngả cam, bóng râm ngả xanh, đo bằng nhiệt độ màu (đơn vị Kelvin, K). Mắt người tự bù nên tờ giấy trắng vẫn trông trắng, còn máy ảnh cần được chỉ đâu là màu trắng. Cân bằng trắng là việc chỉnh để vật màu trắng ra đúng màu trắng.",
+  "q:3":"Fujifilm từng là hãng sản xuất phim nhựa. Giả lập phim mô phỏng màu và tương phản của các dòng phim của hãng: Provia, Velvia, Astia là phim dương bản; Pro Neg là phim âm bản dành cho chụp chân dung chuyên nghiệp; Classic Chrome lấy cảm hứng từ ảnh phóng sự trên tạp chí. Giả lập chỉ áp vào file JPEG, file RAW vẫn giữ dữ liệu gốc.",
+  "q:4":"Dải tương phản động (dynamic range) là khoảng chênh lệch giữa vùng sáng nhất và tối nhất mà ảnh còn giữ được chi tiết. Cảnh ngược sáng thường vượt quá khả năng này. DR200 và DR400 chụp tối đi 1 hoặc 2 nấc để giữ vùng sáng, rồi kéo sáng phần còn lại khi xử lý ảnh; vì vậy chúng cần ISO cao hơn tương ứng.",
+  "disp:0":"Histogram là biểu đồ đếm số điểm ảnh theo độ sáng: bên trái là tối, bên phải là sáng, cột càng cao là càng nhiều điểm ảnh ở mức sáng đó. Lưới 3x3 dựa trên quy tắc một phần ba: đặt chủ thể ở các đường hoặc giao điểm của lưới thường cho bố cục cân đối hơn đặt chính giữa."
+};
+function meanBlock(id){const m=MEAN[id];if(!m)return "";return '<div class="mean"><h3>Nghĩa là gì</h3>'+m.map(x=>'<p>'+esc(x)+'</p>').join("")+'</div><h3>Trên máy</h3>';}
 const STEPS = ["release","auto","shutter","mount","ev","focus","drive","q","disp"];
 const NS = "http://www.w3.org/2000/svg";
 let view="tren", sel=null, preset=false;
@@ -445,7 +485,7 @@ function renderSets(c){
     const key=c.id+":"+si;
     if(optSel[key]===undefined){const d=set.opts.findIndex(o=>o.n==="Base"||o.n==="0"||o.n==="A"||o.n==="Auto"||o.n==="Provia"||o.n==="S");optSel[key]=d<0?0:d;}
     const o=set.opts[optSel[key]];
-    h+='<div class="oset"><h3>'+esc(set.label)+'</h3><div class="pills" role="group" aria-label="'+esc(set.label)+'">'+
+    h+='<div class="oset"><h3>'+esc(set.label)+'</h3>'+(SETMEAN[key]?'<p class="smean">'+esc(SETMEAN[key])+'</p>':'')+'<div class="pills" role="group" aria-label="'+esc(set.label)+'">'+
       set.opts.map((x,i)=>'<button class="pill" data-k="'+key+'" data-i="'+i+'" aria-pressed="'+(i===optSel[key])+'">'+esc(x.n)+'</button>').join("")+
       '</div><p class="odesc"><strong>'+esc(o.n)+':</strong> '+esc(o.d)+'</p>';
     if(o.fx)h+='<div class="prev">'+scene(o.fx)+'</div><p class="cap">'+esc(set.cap||"Hình minh họa đơn giản, các thông số khác giữ nguyên.")+'</p>';
@@ -467,7 +507,7 @@ function renderPanel(){
     }
     return;
   }
-  let h='<h2>'+esc(c.name)+'</h2><p class="where">'+esc(c.where)+'</p><p>'+esc(c.what)+'</p>';
+  let h='<h2>'+esc(c.name)+'</h2><p class="where">'+esc(c.where)+'</p>'+meanBlock(c.id)+'<p>'+esc(c.what)+'</p>';
   if(c.tip)h+='<p class="cap" style="font-size:14px">'+esc(c.tip)+'</p>';
   if(preset&&c.preset)h+='<div class="setbox"><strong>Thiết lập chế độ A:</strong> '+esc(c.preset)+'</div>';
   h+=renderSets(c);

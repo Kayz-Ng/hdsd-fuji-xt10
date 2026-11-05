@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hướng dẫn nút bấm Fujifilm X-T10</title>
+<title>Hướng dẫn Fujifilm X-T10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
@@ -83,6 +83,34 @@ footer{color:var(--muted);font-size:13px;margin-top:22px;max-width:70ch}
 .prev svg{display:block;width:100%;height:auto}
 .cap{font-size:13px;color:var(--muted);margin:2px 0 0}
 .panel{max-height:none}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:22px 0 0;overflow-x:auto}
+.tabs button{font:inherit;font-size:16px;font-weight:500;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 14px;margin-bottom:-1px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+[role="tabpanel"][hidden]{display:none}
+#tab-recipes .recipes{margin-top:22px}
+.recipes{margin-top:34px}
+.recipes>h2{font-size:clamp(22px,3vw,28px);font-weight:600;line-height:1.2;margin:0 0 6px}
+.rintro{color:var(--muted);max-width:72ch;margin:0 0 18px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,500px),1fr));gap:18px}
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 20px 22px;min-width:0}
+.rcard h3{font-size:20px;font-weight:600;line-height:1.25;margin:0 0 2px}
+.rtag{color:var(--muted);font-size:14px;margin:0 0 12px}
+.rcard h4{font-size:15px;font-weight:600;margin:16px 0 4px}
+.rcard p{margin:0 0 8px}
+.rcard ol{margin:0;padding-left:20px}
+.rcard ul{margin:0;padding-left:20px}
+.rcard li{margin:3px 0}
+.rtable{overflow-x:auto;margin-top:4px}
+.rtable table{width:100%;border-collapse:collapse;font-size:14px}
+.rtable th,.rtable td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.rtable th{color:var(--muted);font-weight:500}
+.rtable td.chg{font-weight:600}
+.rtable td.na{color:var(--muted)}
+.verdict{background:var(--soft);border-left:3px solid var(--accent);padding:10px 14px;margin:12px 0 0}
+.rnote{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-top:18px}
+.rnote h3{font-size:18px;font-weight:600;margin:0 0 8px}
+.rnote ul{margin:0;padding-left:20px}
+.rnote li{margin:4px 0}
 .mean{background:var(--bg);border-radius:12px;padding:12px 16px 6px;margin:14px 0 4px}
 .mean h3{margin:0 0 6px}
 .mean p{margin:0 0 8px}
@@ -93,17 +121,20 @@ footer{color:var(--muted);font-size:13px;margin-top:22px;max-width:70ch}
 <body>
 <div class="wrap">
 <header>
-  <h1>Nút bấm và bánh xoay trên Fujifilm X-T10</h1>
-  <p>Chạm vào vòng tròn vàng trên máy để xem nút đó dùng làm gì, rồi chọn từng lựa chọn của nút để xem ảnh thay đổi ra sao. Bật “Thiết lập chế độ A” để xem cách đặt máy cho người mới bắt đầu.</p>
+  <h1>Hướng dẫn Fujifilm X-T10</h1>
+  <p>Tab <strong>Nút bấm và bánh xoay</strong>: chạm vào vòng tròn vàng trên máy để xem nút đó dùng làm gì, rồi chọn từng lựa chọn để xem ảnh thay đổi ra sao. Tab <strong>Công thức màu</strong>: các công thức màu đặt sẵn cho X-T10.</p>
 </header>
 
+<nav class="tabs" role="tablist" aria-label="Nội dung"><button role="tab" data-tab="buttons" aria-selected="true">Nút bấm và bánh xoay</button><button role="tab" data-tab="recipes" aria-selected="false">Công thức màu</button></nav>
+
+<div id="tab-buttons" role="tabpanel">
 <div class="bar">
   <div class="views" role="group" aria-label="Chọn mặt máy">
     <button data-view="tren" aria-pressed="true">Mặt trên</button>
     <button data-view="sau" aria-pressed="false">Mặt sau</button>
     <button data-view="truoc" aria-pressed="false">Mặt trước</button>
   </div>
-  <button class="preset" id="presetBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Thiết lập chế độ A</button>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="preset" id="presetBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Thiết lập chế độ A</button></div>
 </div>
 
 <div class="grid">
@@ -171,6 +202,17 @@ footer{color:var(--muted);font-size:13px;margin-top:22px;max-width:70ch}
 </div>
 
 <aside class="panel" id="panel" aria-live="polite"></aside>
+</div>
+
+</div>
+<div id="tab-recipes" role="tabpanel" hidden>
+<section class="recipes" id="recipes" aria-labelledby="rtitle">
+  <h2 id="rtitle">Công thức màu cho X-T10</h2>
+  <p class="rintro">Bảy công thức màu đặt sẵn cho X-T10, vừa đủ 7 ô C1–C7: năm công thức chuyển từ video tham khảo, một công thức đa dụng cho ảnh người có bối cảnh và một công thức chụp flash ban đêm. Mỗi thẻ ghi thông số đặt trên máy, ảnh sẽ ra sao, khi chụp người sẽ thế nào và khi nào nên dùng.</p>
+  <div class="rnote" id="rpick" style="margin:0 0 18px"></div>
+  <div class="rgrid" id="rgrid"></div>
+  <div class="rnote" id="rnote"></div>
+</section>
 </div>
 
 <footer>Sơ đồ đơn giản hóa để chỉ vị trí tương đối, không đúng tỷ lệ. Tên và vị trí các nút theo sách hướng dẫn chính hãng của X-T10; tên mục menu có thể hơi khác tùy phiên bản firmware.</footer>
@@ -409,6 +451,88 @@ const SETMEAN = {
   "disp:0":"Histogram là biểu đồ đếm số điểm ảnh theo độ sáng: bên trái là tối, bên phải là sáng, cột càng cao là càng nhiều điểm ảnh ở mức sáng đó. Lưới 3x3 dựa trên quy tắc một phần ba: đặt chủ thể ở các đường hoặc giao điểm của lưới thường cho bố cục cân đối hơn đặt chính giữa."
 };
 function meanBlock(id){const m=MEAN[id];if(!m)return "";return '<div class="mean"><h3>Nghĩa là gì</h3>'+m.map(x=>'<p>'+esc(x)+'</p>').join("")+'</div><h3>Trên máy</h3>';}
+const RECIPES = [
+ {t:"1. Vàng nâu hoài cổ",tag:"Ảnh 1 · kiến trúc cổ, tông vàng nâu giống phim",slot:"C1",
+  verdict:"Phố cổ, kiến trúc Pháp, tường vàng, cửa gỗ, quán cà phê cũ và nắng chiều. Tông vàng nâu ấm cùng vùng tối được nâng lên cho cảm giác ảnh phim cũ, hơi bạc màu.",
+  rows:[["Giả lập màu","Classic Chrome","Classic Chrome"],["Dynamic Range","DR400","DR400 (cần ISO từ 800)"],["Highlight","0","0"],["Shadow","−2","−2"],["Color","+2","+2"],["Noise Reduction","−4","−2 (thấp nhất)","chg"],["Sharpness","−2","−2"],["Grain Effect","Strong, Small","Không có","na"],["Color Chrome Effect","Strong","Không có","na"],["Color Chrome FX Blue","Weak","Không có","na"],["Cân bằng trắng","5200K, R+1 B−6","5200K, R+1 B−6"],["ISO","Auto","Auto"],["Bù sáng","+1/3 đến +1","+1/3 đến +1"]],
+  result:["Tông tổng thể ấm, ngả vàng nâu như ảnh in từ phim cũ.","Vùng tối sáng lên, ảnh mềm và hơi “bạc”, ít bóng đen đặc.","Màu vàng, cam, đỏ của tường, ngói, gỗ nổi bật; màu xanh lá ngả vàng rêu.","Trời xanh sẽ nhạt và hơi ngả xanh xám."],
+  use:"Phố cổ, kiến trúc Pháp, nắng chiều, quán cà phê cũ, đồ vật gỗ.",avoid:"Cảnh cần trời biển xanh trong, ảnh dưới đèn vàng trong nhà (sẽ vàng quá).",
+  diff:"Thiếu hạt phim và Color Chrome nên ảnh trên X-T10 “sạch” hơn, màu đỏ và vàng đậm kém sâu hơn ảnh mẫu một chút. DR400 cần ISO từ 800; ngoài nắng gắt mà máy không đủ nhanh, chuyển sang DR200.",
+  people:["Da ngả ấm vàng, trông như ảnh phim cũ; người da ngăm sẽ đậm và nâu hơn.","Vùng tối được nâng lên nên mặt ít bóng gắt, nhưng tổng thể hơi phẳng, nhẹ nhàng.","Hợp người đứng trước tường vàng, cửa gỗ, phố cổ; trang phục màu be, nâu, trắng.","Đứng dưới nắng chiều vàng, da dễ vàng quá: giảm bù sáng về 0, hoặc đổi lệch cân bằng trắng thành B−3."],
+  fx:{mat:MAT("0.82 0.1 0.03 0 0.09 0.07 0.75 0.05 0 0.08 0.05 0.13 0.55 0 0.06 0 0 0 1 0"),b:0.15}},
+ {t:"2. Nắng ấm tương phản",tag:"Ảnh 2 · màu rực, hơi cháy, tương phản cao",slot:"C2",
+  verdict:"Du lịch và đường phố ngày nắng, công viên, công trình dưới trời trong. Màu ấm, rực, sắc nét, đậm chất nắng nhiệt đới.",
+  rows:[["Giả lập màu","Classic Chrome","Classic Chrome"],["Dynamic Range","DR200","DR200"],["Highlight","0","0"],["Shadow","0","0 (hoặc +1 nếu muốn gắt hơn)"],["Color","+2","+2"],["Noise Reduction","−4","−2 (thấp nhất)","chg"],["Sharpness","+1","+1"],["Grain Effect","Weak, Small","Không có","na"],["Color Chrome Effect","Strong","Không có","na"],["Color Chrome FX Blue","Weak","Không có","na"],["Cân bằng trắng","Daylight, R+2 B−5","Daylight (Nắng), R+2 B−5"],["ISO","Auto","Auto"],["Bù sáng","0 đến +2/3","0 đến +2/3"]],
+  result:["Màu ấm, rực, đậm chất nắng nhiệt đới.","Cỏ cây xanh vàng tươi, tường trắng ngả kem.","Ảnh sắc nét, chi tiết rõ nhờ Sharpness +1.","Vùng sáng dễ cháy khi bù sáng dương dưới nắng gắt."],
+  use:"Du lịch, đường phố ban ngày nắng, công viên, công trình dưới trời nắng.",avoid:"Ngày âm u (ảnh sẽ vàng đục), trong nhà đèn vàng.",
+  diff:"Nếu thấy ảnh cháy quá, giữ bù sáng ở 0 hoặc −1/3. Muốn tương phản cao giống mô tả hơn, đặt Shadow +1.",
+  people:["Da rám nắng, khỏe khoắn, má hơi đỏ.","Sharpness +1 làm rõ chi tiết da; chụp cận mặt sẽ thấy lỗ chân lông.","Hợp ảnh du lịch toàn thân, người là một phần của cảnh nắng.","Tránh để mặt người dưới nắng gắt trực tiếp vì dễ cháy trán, mũi. Cho người đứng chỗ bóng râm nhẹ, nền phía sau ngoài nắng."],
+  fx:{mat:MAT("1.2 0.05 -0.05 0 -0.06 0.02 1.12 0 0 -0.06 -0.05 0.05 0.9 0 -0.08 0 0 0 1 0"),b:0.3}},
+ {t:"3. Biển xanh trầm",tag:"Ảnh 3 · xanh, xám, biển xanh điểm đỏ",slot:"C3",
+  verdict:"Biển, núi, bầu trời trong, đền chùa và kiến trúc có bóng đổ mạnh, cảnh có một điểm màu đỏ làm nhấn. Tông xanh ngọc và xám, bóng tối sâu, màu tổng thể dịu.",
+  rows:[["Giả lập màu","Classic Chrome","Classic Chrome"],["Dynamic Range","DR400","DR400 (cần ISO từ 800)"],["Highlight","−1","−1"],["Shadow","+1","+1"],["Color","−1","−1 (hoặc 0 để bù màu xanh)"],["Noise Reduction","−4","−2 (thấp nhất)","chg"],["Sharpness","−1","−1"],["Grain Effect","Strong, Large","Không có","na"],["Color Chrome Effect","Strong","Không có","na"],["Color Chrome FX Blue","Weak","Không có","na"],["Cân bằng trắng","Daylight, R−1 B−3","Daylight (Nắng), R−1 B−3"],["ISO","Auto, tối đa 6400","Auto, tối đa 6400"],["Bù sáng","+1/3","0 đến −1/3","chg"]],
+  result:["Tông xanh ngọc, xám, hơi lạnh nhưng không xanh lè.","Bóng tối sâu, ảnh có chiều sâu và hơi “lì”.","Màu dịu tổng thể, nên các điểm đỏ như mái ngói, áo đỏ càng nổi.","Trong bóng râm (đền, chùa), ảnh trầm và có không khí."],
+  use:"Biển, núi, bầu trời trong, kiến trúc có bóng đổ mạnh, ảnh có một điểm màu đỏ làm nhấn.",avoid:"Chân dung cận mặt (da sẽ xám, thiếu sức sống).",
+  diff:"Không có Color Chrome FX Blue nên trời và biển trên X-T10 sẽ nhạt hơn ảnh mẫu. Để bù, mình đề xuất bù sáng 0 đến −1/3 thay vì +1/3 (trời càng tối càng xanh đậm), và có thể tăng Color lên 0.",
+  people:["Da hơi xám, lạnh vì Color −1 và tông xanh, nên không hợp ảnh cận mặt.","Đẹp nhất khi người nhỏ trong khung, đứng trước biển hay trời, quay nghiêng hoặc quay lưng như ảnh mẫu.","Trang phục đỏ, cam, vàng sẽ nổi bật trên nền xanh.","Muốn da ấm hơn mà vẫn giữ nền xanh: đổi Color lên 0 và lệch cân bằng trắng thành R0 B−3."],
+  fx:{mat:MAT("0.8 0.12 0.05 0 -0.04 0.06 0.95 0.06 0 -0.04 0.02 0.12 1.05 0 -0.03 0 0 0 1 0"),b:-0.1}},
+ {t:"4. Phong cách Kodachrome",tag:"Ảnh 4 · giống phim Kodachrome, đậm đà, tương phản",slot:"C4",
+  verdict:"Đường phố ban ngày, xe cộ, tường màu, cảnh có nắng và bóng đổ rõ. Tương phản cao, màu đậm đà kiểu phim dương bản Kodachrome trong tạp chí cũ.",
+  rows:[["Giả lập màu","Classic Chrome","Classic Chrome"],["Dynamic Range","DR400","DR400 (cần ISO từ 800)"],["Highlight","+0,5","0 (hoặc +1)","chg"],["Shadow","+1,5","+2 (hoặc +1)","chg"],["Color","+1","+1"],["Noise Reduction","−4","−2 (thấp nhất)","chg"],["Sharpness","−1","−1"],["Grain Effect","Off","Không có (tương đương Off)"],["Color Chrome Effect","Strong","Không có","na"],["Color Chrome FX Blue","Weak","Không có","na"],["Cân bằng trắng","5650K","Mức K gần 5650K nhất"],["ISO","(không ghi)","Auto"],["Bù sáng","+1/3","+1/3"]],
+  result:["Tương phản cao, bóng đổ đậm và sâu.","Màu đậm đà nhưng không chói: đỏ, vàng, cam chắc; xanh lá trầm.","Tông hơi ấm tự nhiên, không ngả màu rõ.","Ảnh trông giống phim dương bản cũ trong tạp chí."],
+  use:"Đường phố ban ngày, xe cộ, tường màu, ảnh có nắng và bóng đổ rõ.",avoid:"Cảnh ngược sáng mạnh (bóng tối sẽ đen đặc), chân dung cần da mềm.",
+  diff:"Chọn Highlight 0 và Shadow +2 nếu thích bóng tối đậm như ảnh mẫu; chọn Highlight +1 và Shadow +1 nếu muốn tương phản dàn đều hơn. Không có Color Chrome nên màu đỏ, vàng bớt chiều sâu.",
+  people:["Da đậm, khuôn mặt có khối rõ nhờ tương phản cao, nhiều bóng đổ.","Hợp ảnh đường phố có người đi qua, ảnh phong cách tạp chí, thời trang.","Bóng dưới mắt và cằm sẽ đậm; người đứng dưới nắng trưa trông khá gắt.","Không hợp chân dung cần da mịn, sáng; chụp người lớn tuổi thì nếp nhăn rõ hơn."],
+  fx:{mat:MAT("1.25 -0.05 -0.05 0 -0.06 -0.03 1.15 -0.02 0 -0.05 -0.05 -0.05 1 0 -0.07 0 0 0 1 0"),b:0.05}},
+ {t:"5. Chân dung da sáng",tag:"Ảnh 5 · chân dung",slot:"C5",
+  verdict:"Chân dung là chủ thể chính, từ cận mặt đến toàn thân: trong quán cạnh cửa sổ, ngoài trời bóng râm, ảnh bạn bè, gia đình. Da sáng, mềm, tông tự nhiên.",
+  rows:[["Giả lập màu","Pro Neg Hi","Pro Neg Hi"],["Dynamic Range","DR200","DR200"],["Highlight","−1","−1"],["Shadow","−1","−1"],["Color","+1","+1"],["Noise Reduction","−3","−2 (thấp nhất)","chg"],["Sharpness","+1","0 (hoặc +1 nếu muốn sắc)","chg"],["Grain Effect","Weak","Không có","na"],["Cân bằng trắng","Auto","Auto"],["ISO","Auto, tối đa 6400","Auto, tối đa 6400"],["Bù sáng","+1/3 đến +2/3","+1/3 đến +2/3"]],
+  result:["Da sáng, hồng hào tự nhiên, không bị vàng hay xám.","Ánh sáng trên mặt mềm, bóng dưới cằm và hốc mắt nhẹ.","Màu tóc, môi, quần áo vừa đậm, không sặc sỡ.","Ảnh trong trẻo, tươi, hợp đăng mạng ngay."],
+  use:"Chân dung trong quán cà phê cạnh cửa sổ, ngoài trời bóng râm, ảnh bạn bè, gia đình.",avoid:"Phong cảnh cần màu mạnh (ảnh sẽ nhạt).",
+  diff:"Gần như giữ nguyên được toàn bộ trên X-T10, chỉ thiếu hạt phim rất nhẹ. Mình đề xuất Sharpness 0 để da mịn hơn. Kết hợp chế độ A và khẩu to nhất để xóa phông.",
+  people:["Da sáng, hồng hào, mịn nhất trong các công thức.","Nền phía sau dịu và nhạt hơn các công thức khác, làm người nổi bật.","Dùng tốt cho cả cận mặt, nửa người và toàn thân, miễn người là chủ thể chính.","Nếu bối cảnh rất đẹp và bạn muốn nền tươi hơn, dùng công thức 6."],
+  fx:{mat:MAT("0.95 0.05 0 0 0.05 0.02 0.92 0.02 0 0.04 0 0.04 0.86 0 0.05 0 0 0 1 0"),b:0.2}},
+ {t:"6. Chân dung có bối cảnh (đa dụng)",tag:"Gợi ý thêm của mình · ảnh người có nền phía sau · chưa có ảnh mẫu thật",slot:"C6",
+  verdict:"Ảnh người có bối cảnh dùng hàng ngày: dạo phố, du lịch, công viên, biển, quán cà phê. Da đẹp mà nền vẫn tươi. Đây là công thức mình gợi ý thêm, nên chụp thử vài tấm rồi chỉnh theo gu của bạn.",
+  rows:[["Giả lập màu","—","Astia"],["Dynamic Range","—","DR200"],["Highlight","—","−1"],["Shadow","—","0"],["Color","—","+1"],["Noise Reduction","—","−2"],["Sharpness","—","0"],["Cân bằng trắng","—","Auto, R+1 B−1"],["ISO","—","Auto, tối đa 3200"],["Bù sáng","—","+1/3"]],
+  result:["Da sáng, hồng hào tự nhiên, ấm nhẹ.","Trời, cây, tường phía sau tươi hơn công thức 5 nhưng không rực như Velvia.","Vùng sáng mềm, bóng tối giữ nguyên nên ảnh không bị phẳng."],
+  people:["Cân bằng giữa người và cảnh: cả hai đều đẹp, không bên nào lấn át.","Hợp ảnh du lịch có người, bạn bè dạo phố, gia đình ngoài trời.","Dùng f/5.6 đến f/8 để nền vẫn nhận ra được là phố, là biển.","Người đứng trong bóng râm, nền ngoài nắng: tăng bù sáng lên +2/3 để mặt đủ sáng."],
+  use:"Ảnh người có bối cảnh ở hầu hết nơi: phố, công viên, biển, quán cà phê.",avoid:"Khi muốn một phong cách màu cá tính, các công thức 1 đến 4 sẽ có “chất” hơn.",
+  diff:"Dùng được đầy đủ trên X-T10, không cần tính năng nào X-T10 thiếu.",
+  fx:{mat:MAT("1.08 0.04 0 0 0.02 0.02 1.04 0 0 0.01 0 0.04 0.94 0 0 0 0 0 1 0"),b:0.15}},
+ {t:"7. Flash đêm",tag:"Ảnh tham khảo · người chụp ban đêm với flash, nền đèn thành phố",slot:"C7",
+  verdict:"Chân dung ban đêm ở phố đèn, trước nhà thờ, phố đi bộ, chợ đêm, quán có đèn trang trí, mùa Giáng sinh. Người sáng rõ, sắc nét; nền tối với ánh đèn vàng ấm, đôi khi có vệt nhòe nghệ thuật.",
+  rows:[["Giả lập màu","","Classic Chrome"],["Dynamic Range","","DR100"],["Highlight","","+1"],["Shadow","","+1"],["Color","","+1"],["Noise Reduction","","−2"],["Sharpness","","0"],["Cân bằng trắng","","Daylight (Nắng)"],["Chế độ chụp","","M (tự chọn tốc độ và khẩu)"],["Tốc độ","","1/15 đến 1/60 (tối đa 1/180 khi dùng flash)"],["Khẩu độ","","f/4 đến f/5.6"],["ISO","","400 đến 800"],["Flash","","Bật; TTL với bù sáng flash −2/3 đến −1, hoặc công suất tay khoảng 1/8 nếu menu có"],["Bù sáng","","0 (ở chế độ M bánh này không đổi độ sáng ảnh)"]],
+  result:["Người sáng, rõ nét nhờ flash; da trung tính, không bị vàng.","Nền giữ được ánh đèn vàng cam của phố, nhà, đèn trang trí.","Tương phản cao: vùng tối đen sâu, màu đỏ và trắng của trang phục nổi bật.","Ở tốc độ chậm, nền và viền người có thể nhòe nhẹ, tạo cảm giác chuyển động."],
+  people:["Da sáng đều, nhưng dễ bóng ở trán và mũi nếu flash mạnh: giảm công suất hoặc bù sáng flash âm.","Đứng cách người khoảng 1,5 đến 3 mét; xa hơn thì flash tích hợp không đủ sáng.","Trang phục sáng màu (trắng, đỏ) bắt flash rất đẹp; đồ đen dễ chìm vào nền.","Người được chụp hay nhắm mắt khi flash chớp: chụp vài tấm liền mỗi kiểu."],
+  tech:["Gạt cần AUTO khỏi vị trí AUTO. Đặt bánh tốc độ ở 30 (1/30) để bắt đầu, mở khẩu f/4 hoặc to nhất ống kính cho phép, ISO 800.","Bật flash, chụp thử một tấm rồi chỉnh: nền tối quá thì chậm tốc độ (1/30 xuống 1/15); nền sáng quá thì nhanh tốc độ (tối đa 1/180); mặt sáng quá thì giảm flash; mặt tối quá thì đứng gần hơn hoặc tăng ISO.","Tốc độ chậm làm nền nhòe nếu tay rung. Muốn nền nhòe nghệ thuật thì giữ 1/15; muốn nền rõ thì tựa máy vào lan can hoặc dùng 1/60.","Lấy nét trong tối: để đèn trợ sáng lấy nét hoạt động, hoặc đặt điểm lấy nét vào vùng có tương phản như viền mặt, gọng kính, tóc.","Đổi sang C7 chỉ đổi màu. Tốc độ, khẩu độ, ISO và flash không lưu được, phải chỉnh tay mỗi lần."],
+  use:"",avoid:"Người đứng xa quá 3 mét, nơi cấm dùng flash (bên trong nhà thờ, bảo tàng, sân khấu), hoặc khi muốn ảnh đêm tự nhiên không có ánh flash.",
+  diff:"Màu chỉ gần giống ảnh tham khảo vì X-T10 không có giả lập Classic Negative. Flash tích hợp của X-T10 khá yếu; với flash rời gắn trên hot shoe, bạn có thể dùng khẩu nhỏ hơn và đứng xa hơn. Mình chưa chắc flash tích hợp chỉnh được công suất tay, hãy kiểm tra trong menu cài đặt flash.",
+  fx:{mat:MAT("1.15 0 0 0 -0.06 0 1.12 0 0 -0.06 0 0 1.1 0 -0.05 0 0 0 1 0"),night:1}}
+];
+function renderRecipes(){
+  const NOXT=["Grain Effect","Color Chrome Effect","Color Chrome FX Blue"];
+  const g=document.getElementById("rgrid");
+  g.innerHTML=RECIPES.map(r=>'<article class="rcard"><h3>'+esc(r.t)+'</h3><p class="rtag">'+esc(r.tag)+' · gợi ý lưu vào '+esc(r.slot)+'</p>'+
+    '<div class="prev">'+scene(r.fx)+'</div><p class="cap">Minh họa gần đúng tông màu, không phải ảnh chụp thật.</p>'+
+    '<div class="verdict"><strong>Hợp chụp:</strong> '+esc(r.verdict)+'</div>'+
+    '<h4>Thông số trên X-T10</h4><div class="rtable"><table><thead><tr><th>Thiết lập</th><th>Giá trị</th></tr></thead><tbody>'+
+    r.rows.filter(x=>!NOXT.includes(x[0])).map(x=>'<tr><td>'+esc(x[0])+'</td><td class="chg">'+esc(x[2].replace(" (thấp nhất)",""))+'</td></tr>').join("")+'</tbody></table></div>'+
+    '<h4>Ảnh sẽ ra sao</h4><ul>'+r.result.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
+    (r.people?'<h4>Khi chụp người</h4><ul>'+r.people.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>':'')+(r.tech?'<h4>Cách chụp</h4><ol>'+r.tech.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol>':'')+'<h4>Không hợp khi</h4><p>'+esc(r.avoid)+'</p>'+
+    '<h4>Lưu ý</h4><p>'+esc(r.diff)+'</p></article>').join("");
+  const PICK=[["Phố cổ, tường vàng, quán cà phê cũ","1. Vàng nâu hoài cổ","Da ấm, hơi vàng; cả ảnh như phim cũ."],["Công viên, đường phố nắng","2. Nắng ấm tương phản","Da rám nắng, khỏe khoắn; nền rực."],["Biển, núi, trời xanh (người nhỏ trong khung)","3. Biển xanh trầm","Người là điểm nhấn; đứng gần thì da hơi xám."],["Đường phố có nắng và bóng đổ rõ","4. Kodachrome","Khối mặt rõ, đậm, phong cách tạp chí."],["Người là chủ thể chính, từ cận mặt đến toàn thân","5. Chân dung da sáng","Da đẹp nhất, nền dịu."],["Ảnh người có bối cảnh, dùng hàng ngày","6. Chân dung có bối cảnh","Da đẹp, nền vẫn tươi."],["Ban đêm, phố có đèn, cần người sáng rõ","7. Flash đêm","Người sáng, sắc nét; nền tối có ánh đèn vàng."]];
+  document.getElementById("rpick").innerHTML='<h3>Chụp người có bối cảnh: chọn công thức theo nền phía sau</h3><p class="cap" style="font-size:14px;margin-bottom:6px">Khi nền chiếm nhiều khung hình, màu nền quyết định cảm giác cả bức ảnh, nên chọn công thức theo bối cảnh.</p><div class="rtable"><table><thead><tr><th>Bối cảnh phía sau</th><th>Công thức</th><th>Người sẽ ra sao</th></tr></thead><tbody>'+
+    PICK.map(x=>'<tr><td>'+esc(x[0])+'</td><td class="chg">'+esc(x[1])+'</td><td>'+esc(x[2])+'</td></tr>').join("")+'</tbody></table></div>'+
+    '<h3 style="margin-top:16px">Cách chụp người có bối cảnh</h3><ul>'+
+    ['Không mở khẩu to nhất: dùng f/5.6 đến f/8 để nền vẫn nhận ra được, chỉ hơi mềm.','Zoom ở mức rộng hơn (khoảng 16–35mm) và lùi xa người một chút để thấy bối cảnh.','Đặt người ở một phần ba khung hình (bật lưới 3x3), phần còn lại dành cho bối cảnh.','Vẫn đặt điểm lấy nét vào mặt hoặc mắt người.','Tránh để nắng gắt chiếu thẳng lên mặt; bóng râm nhẹ với nền ngoài nắng thường đẹp hơn.'].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+  document.getElementById("rnote").innerHTML='<h3>Lưu ý chung khi dùng các công thức này trên X-T10</h3><ul>'+
+    ['Trên X-T10, Highlight, Shadow, Color, Sharpness và Noise Reduction chỉnh theo nấc nguyên từ −2 đến +2.',
+     'DR400 cần ISO từ 800, DR200 cần ISO từ 400. Nếu ISO thấp hơn, máy tự hạ mức DR. Ngoài nắng gắt, mở khẩu to kèm ISO 800 có thể vượt tốc độ 1/4000 của màn trập cơ; khi đó khép khẩu nhỏ lại hoặc dùng DR200.',
+     'Khi lưu vào C1–C7, mức lệch R/B của cân bằng trắng không được lưu trên X-T10. Cách xoay xở: chỉnh lệch R/B trong menu chụp trước, rồi vào Edit/Save Custom Setting và dùng Save Current Settings. Bù sáng cũng không lưu được, chỉnh bằng bánh bù sáng.',
+     'Cân bằng trắng theo độ K (5200K, 5650K): chọn mục K trong cân bằng trắng, nếu máy không có đúng mức đó thì chọn mức gần nhất.',
+     'Muốn có hạt phim như ảnh mẫu, chụp RAW kèm JPEG và thêm hạt khi chỉnh ảnh trên điện thoại (Lightroom, VSCO…).'].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+}
 const STEPS = ["release","auto","shutter","mount","ev","focus","drive","q","disp"];
 const NS = "http://www.w3.org/2000/svg";
 let view="tren", sel=null, preset=false;
@@ -469,6 +593,7 @@ function scene(fx){
       '</g>'+
       '<circle cx="232" cy="164" r="11" fill="#D9443A" filter="url(#'+k+'m)"/>'+
     '</g>';
+  if(f.night)s+='<rect width="320" height="200" fill="#070a14" opacity=".8"/><rect x="104" y="96" width="40" height="66" rx="14" fill="#F2F2F2"/><circle cx="124" cy="80" r="16" fill="#E8BC98"/><path d="M108 76 Q112 60 126 62 Q140 62 141 78 Q134 68 124 70 Q114 70 108 76Z" fill="#2A1E17"/><g fill="#FFC46B">'+[[36,96],[70,90],[196,92],[228,98],[266,70],[300,94]].map(p=>'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5"/><circle cx="'+p[0]+'" cy="'+p[1]+'" r="9" opacity=".25"/>').join("")+'</g>';
   if(f.b>0)s+='<rect width="320" height="200" fill="#FFFFFF" opacity="'+Math.min(f.b*0.28,0.6)+'"/>';
   if(f.b<0)s+='<rect width="320" height="200" fill="#000000" opacity="'+Math.min(-f.b*0.3,0.62)+'"/>';
   if(f.n>0)s+='<rect width="320" height="200" filter="url(#'+k+'n)" opacity="'+f.n+'" style="mix-blend-mode:overlay"/><rect width="320" height="200" filter="url(#'+k+'n)" opacity="'+(f.n*0.5)+'"/>';
@@ -558,9 +683,19 @@ document.getElementById("presetBtn").addEventListener("click",e=>{
   stage.classList.toggle("show-preset",preset);
   renderChips();renderPanel();
 });
-window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(h&&h!==view)setView(h);});
-let startView="tren";try{startView=location.hash.slice(1)||"tren";}catch(e){}
-setView(startView);
+let tab="buttons";
+function showTab(t,push){
+  tab=t;
+  document.getElementById("tab-buttons").hidden=(t!=="buttons");
+  document.getElementById("tab-recipes").hidden=(t!=="recipes");
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===t?"true":"false"));
+  if(push){try{history.replaceState(null,"",t==="recipes"?"#cong-thuc":"#"+view);}catch(e){}}
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{showTab(b.dataset.tab,true);window.scrollTo(0,0);}));
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(h==="cong-thuc"){showTab("recipes");return;}if(tab!=="buttons")showTab("buttons");if(h&&h!==view)setView(h);});
+let startHash="";try{startHash=location.hash.slice(1);}catch(e){}
+renderRecipes();
+if(startHash==="cong-thuc"){setView("tren");showTab("recipes",true);}else{setView(startHash||"tren");showTab("buttons");}
 
 </script>
 </body>
